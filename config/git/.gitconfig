@@ -1,0 +1,10 @@
+[core]
+	excludesFile = ~/.gitignore
+	autocrlf = input
+[user]
+	name = Alfred MOUELLE
+	email = alfredmouelle@gmail.com
+[fetch]
+	prune = true
+[init]
+	defaultBranch = main

@@ -1,0 +1,250 @@
+###############################
+#      CONFIGURATION I3       #
+###############################
+set $mod Mod4
+
+# class			border	    backgr.   	text	     indicat   child_border
+client.focused          #172030     #172030     #C0CAF5      #F8CD7A   #C0CAF5
+client.focused_inactive #172030     #172030     #444B6A      #5A638C   #444B6A
+# client.unfocused        #172030     #16161E     #444B6A      #34384D   #444B6A
+# client.urgent           #C0CAF5     #C0CAF5    	#172030      #DB4B4B   #C0CAF5
+# client.placeholder      #172030     #172030     #fdf6e3      #000000   #444B6A
+# client.background       #172030
+
+
+##############################################
+#               AutoStart Apps               #
+##############################################
+exec --no-startup-id dunst
+exec --no-startup-id picom
+exec --no-startup-id shutter
+exec --no-startup-id redshift -l 49.443232:1.099971 -t 3500:6500 -l manual
+exec_always --no-startup-id numlockx on
+
+
+#exec --no-startup-id code
+exec --no-startup-id xdman
+exec --no-startup-id thunar
+exec --no-startup-id brave
+exec --no-startup-id google-chrome-stable
+#exec --no-startup-id discord
+exec --no-startup-id i3-msg "workspace 2; exec urxvt"
+
+# Pamac Manager a besoin de ça pour gérer l'authentification
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Wifi manager
+exec --no-startup-id nm-applet
+
+# Suspend Manager.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dimblur
+
+# Gerer les layout du clavier
+exec --no-startup-id setxkbmap fr,us -option 'grp:shift_caps_toggle'
+
+##############################################
+#                 APPARENCE                  #
+##############################################
+# Police du systeme
+font pango:SF Pro Display 10
+# Wallpaper
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.jpg
+
+###############################
+#         KEYBINDING          #
+###############################
+# Controls volume key
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Controls light screen key
+#bindsym XF86MonBrightnessUp exec light -s sysfs/backlight/intel_backlight -A 5
+#bindsym XF86MonBrightnessUp exec "echo +10 | sudo tee /sys/class/backlight/intel_backlight/brightness | bc > /sys/class/backlight/intel_backlight/brightness"
+#bindsym XF86MonBrightnessDown exec "echo -10 | sudo tee /sys/class/backlight/intel_backlight/brightness | bc < /sys/class/backlight/intel_backlight/brightness"
+#bindsym XF86MonBrightnessDown exec light -s sysfs/backlight/intel_backlight -U 5
+
+# Play / Pause Spotify
+bindsym XF86AudioPlay exec playerctl -a play-pause
+bindsym XF86AudioPause exec playerctl -a play-pause
+bindsym XF86AudioNext exec playerctl -a next
+bindsym XF86AudioPrev exec playerctl -a previous
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+# bindsym $mod+Return exec i3-msg 'workspace 2' && exec alacritty
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Start pamac-manager
+# bindsym $mod+p exec i3-msg 'workspace 4' && exec pamac-manager
+
+# kill focused window
+bindsym $mod+Shift+x kill
+bindsym $mod+x kill
+
+# Lock the screen
+bindsym $mod+Control+l exec betterlockscreen -l dimblur
+#bindsym $mod+Control+l exec betterlockscreen -l dimblur -- --timestr="%H:%M"
+#bindsym $mod+Control+l exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i $HOME/Images/Wallpaper.png --nofork
+
+# Start rofi as application launcher
+bindsym $mod+d exec --no-startup-id rofi -show drun
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+i focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Tab focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+Tab focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+i move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal | vertical
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# Changer contrainer mode
+bindsym $mod+f fullscreen toggle
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# Ouvrir l'exploreur de fichier
+bindsym $mod+t exec i3-msg 'workspace 4' && exec thunar
+
+# Capture d'écran
+bindsym Print exec shutter -s
+bindsym $mod+shift+s exec shutter -s
+
+# Reload configs
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Voulez vous vraiment vous deconnecter de i3 ? ' -B 'Deconnecter' 'i3-msg exit'"
+
+#######################################
+#          Workspace Manager          #
+#######################################
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws9
+bindsym $mod+Control+Right workspace next
+bindsym $mod+Control+Left workspace prev
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws9
+bindsym $mod+Control+Shift+Right move container to workspace next
+bindsym $mod+Control+Shift+Left move container to workspace prev
+
+# Assign Applications to specific workspace
+assign [class="Code|jetbrains-phpstorm|jetbrains-idea|jetbrains-webstorm"] $ws1
+assign [class="Alacritty|URxvt"] $ws2
+assign [class="Google-chrome|firefox|Brave-browser"] $ws3
+assign [class="Pamac-manager|Thunar|Pcmanfm|GParted"] $ws4
+assign [class="Postman|Filezilla|TeamViewer|Insomnia|Foxit Reader|Evince"] $ws5 
+assign [class="obs|Clementine"] $ws6
+assign [class="Discord|TelegramDesktop|zoom|teams-for-linux"] $ws7
+assign [class="Spotify"] $ws8
+
+for_window [urgent=latest] focus
+for_window [class="Viewnior|Lxappearance|Xarchiver|Nm-connection-editor|Blueman-manager|GParted|mpv|Mousepad|Grub-customizer|Lightdm-gtk-greeter-settings|Pavucontrol|Shutter|feh|xdman-Main"] floating enable
+for_window [class="Spotify|spotify"] move to workspace $ws8
+for_window [class="Discord|discord"] move to workspace $ws7
+for_window [class="jetbrains-phpstorm|jetbrains-idea"] move to workspace $ws1
+for_window [class="TelegramDesktop"] focus
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+###################
+#     I3 Gaps     #
+###################
+for_window [class="^.*"] border pixel 1
+for_window [class=".*"] title_format "  %title"
+gaps inner 0
+smart_borders on
+smart_gaps on
+
+exec_always --no-startup-id "killall polybar; polybar -r default"

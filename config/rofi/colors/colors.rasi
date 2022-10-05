@@ -1,0 +1,10 @@
+* {
+    background:                 rgba ( 45, 48, 59, 95 % );
+    background-alt:             #16161E;
+    background-alt2:            #414868;
+    foreground:                 rgba ( 196, 203, 212, 100 % );
+    foreground-alt:             #061115;
+    accent:                     #7DCFFF;
+    transparent: #00000000;
+    text-color:                 @fg;
+}
