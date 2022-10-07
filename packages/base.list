@@ -12,5 +12,7 @@ brave-bin
 obs-studio
 pulseaudio
 pavucontrol
+pulseaudio-ctl
+jetbrains-toolbox
 google-chrome-stable
 visual-studio-code-bin
