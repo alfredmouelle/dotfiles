@@ -10,19 +10,8 @@ URxvt*boldFont:		    xft:Menlo for Powerline:bold:size=11
 URxvt*cursorBlink:    true
 URxvt.iso14755:		    false
 URxvt*utf8:			      true
-
-! Font Size Control
-URxvt.perl-ext-common: resize-font
-URxvt.keysym.Control-minus:     resize-font:smaller
-URxvt.keysym.Control-plus:      resize-font:bigger
-URxvt.keysym.Control-equal:     resize-font:reset
-URxvt.keysym.Control-question:  resize-font:show
-
-! Restore Ctrl+Shift+(c|v)
-URxvt.keysym.Shift-Control-V: eval:paste_clipboard
-URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
-URxvt.iso14755_52: false
-
+URxvt.keysym.C-equal:      resize-font:bigger
+URxvt.keysym.C-parenright: resize-font:smaller
 
 ! =================
 !       Xft
