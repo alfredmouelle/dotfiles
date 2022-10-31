@@ -32,7 +32,7 @@ font-3 = Font Awesome 6 Free Regular:size=9
 
 modules-left = i3
 modules-center = xwindow mic
-modules-right = volume  date powermenu
+modules-right = volume date powermenu
 
 tray-maxsize = 12
 tray-position = right
@@ -179,12 +179,12 @@ menu-1-1-exec = reboot
 [module/mic]
 type = custom/script
 tail = true
-label-foreground = ${colors.underline-2}
+label-foreground = ${colors.active}
 interval = 0
 
 exec = ~/.config/polybar/scripts/mic.sh &
 click-left = pulseaudio-ctl mute-input
-;click-right = pavucontrol -t 4 &
+click-right = pavucontrol -t 4 &
 ;label-padding = 1
 ;label-font = 1
 

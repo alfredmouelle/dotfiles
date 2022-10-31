@@ -18,7 +18,7 @@ client.focused_inactive #172030     #172030     #444B6A      #5A638C   #444B6A
 exec --no-startup-id dunst
 exec --no-startup-id picom
 exec --no-startup-id shutter
-exec --no-startup-id redshift -l 49.443232:1.099971 -t 3500:6500 -l manual
+exec --no-startup-id redshift -l 49.443232:1.099971 -t 3000:6500 -l manual
 exec_always --no-startup-id numlockx on
 
 
@@ -194,12 +194,12 @@ bindsym $mod+Shift+0 move container to workspace number $ws9
 bindsym $mod+Control+Shift+Right move container to workspace next
 bindsym $mod+Control+Shift+Left move container to workspace prev
 
-# Assign Applications to specific workspace
-assign [class="Code|jetbrains-phpstorm|jetbrains-idea|jetbrains-webstorm"] $ws1
+# Assign Applications to specific workspace		
+assign [class="Code|jetbrains-phpstorm|jetbrains-idea|jetbrains-webstorm|jetbrains-fleet"] $ws1
 assign [class="Alacritty|URxvt"] $ws2
 assign [class="Google-chrome|firefox|Brave-browser"] $ws3
 assign [class="Pamac-manager|Thunar|Pcmanfm|GParted"] $ws4
-assign [class="Postman|Filezilla|TeamViewer|Insomnia|Foxit Reader|Evince"] $ws5 
+assign [class="Postman|Filezilla|TeamViewer|Insomnia|Foxit Reader|Evince|wpspdf|pdf|wps"] $ws5 
 assign [class="obs|Clementine"] $ws6
 assign [class="Discord|TelegramDesktop|zoom|teams-for-linux"] $ws7
 assign [class="Spotify"] $ws8
