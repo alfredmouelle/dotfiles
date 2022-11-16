@@ -1,5 +1,9 @@
 stow = cd config && stow -v -t ~
 
+.PHONY: help
+help: ## Show this help
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	
 .PHONY: fonts
 fonts:
 	xargs -d '\n' -a packages/fonts.list yay --noconfirm --needed -S
@@ -26,18 +30,16 @@ conf:
 	$(stow) dunst
 	$(stow) fish
 	$(stow) git
-	$(stow) gtk-3.0
 	$(stow) i3
-	$(stow) omf
 	$(stow) picom
 	$(stow) polybar
 	$(stow) rofi
-	$(stow) Thunar
-	cp -f ./.bashrc ~/.bashrc
+	cp ./config/git/.gitignore ~/.gitignore
 
 .PHONY: restore
 restore: install conf
 
 .PHONY: test
 test:
-	$(stow) picom
+	$(stow) git
+	cp ./config/git/.gitignore ~/.gitignore
