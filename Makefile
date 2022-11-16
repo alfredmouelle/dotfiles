@@ -1,4 +1,4 @@
-stow = cd config && stow -v -t ~
+stow = cd config && stow -v -t ~/
 
 .PHONY: help
 help: ## Affiche cette aide
@@ -41,5 +41,4 @@ restore: install conf ## Restore entièrement mon système
 
 .PHONY: test
 test:
-	$(stow) git
-	cp ./config/git/.gitignore ~/.gitignore
+	$(stow) i3
