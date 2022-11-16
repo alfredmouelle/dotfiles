@@ -3,6 +3,7 @@ rofi
 picom
 dunst
 polybar
+lxappearance
 polkit-gnome
 rxvt-unicode
 urxvt-clipboard
