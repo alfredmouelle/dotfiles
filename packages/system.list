@@ -1,0 +1,14 @@
+xorg
+lightdm
+lightdm-gtk-greeter
+pulseaudio
+pulseaudio-ctl
+pavucontrol
+playerctl
+spotifyd
+polkit
+bottom
+neofetch
+stow
+vim
+nano

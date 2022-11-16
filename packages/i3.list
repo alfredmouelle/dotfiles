@@ -1,13 +1,10 @@
-mpv
 feh
 rofi
 picom
 dunst
-i3-gaps
 polybar
-playerctl
+polkit-gnome
 rxvt-unicode
 urxvt-clipboard
-urxvt-perls
+betterlockscreen
 urxvt-resize-font-git
-lightdm-gtk-greeter-settings
