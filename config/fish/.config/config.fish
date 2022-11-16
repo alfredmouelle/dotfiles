@@ -53,3 +53,7 @@ abbr -a -g fishsrc "source ~/.config/fish/config.fish"
 # THEME PURE #
 set fish_function_path /home/kali/.config/fish/functions/theme-pure/functions/ $fish_function_path
 source /home/kali/.config/fish/functions/theme-pure/conf.d/pure.fish
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH
+
+source /home/kali/.phpbrew/phpbrew.fish

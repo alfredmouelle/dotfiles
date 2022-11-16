@@ -26,6 +26,7 @@ exec_always --no-startup-id numlockx on
 exec --no-startup-id xdman
 exec --no-startup-id thunar
 exec --no-startup-id brave
+exec --no-startup-id obsidian
 exec --no-startup-id google-chrome-stable
 #exec --no-startup-id discord
 exec --no-startup-id i3-msg "workspace 2; exec urxvt"
@@ -48,7 +49,7 @@ exec --no-startup-id setxkbmap fr,us -option 'grp:shift_caps_toggle'
 # Police du systeme
 font pango:SF Pro Display 10
 # Wallpaper
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.jpg
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/lockscreen.jpg
 
 ###############################
 #         KEYBINDING          #
@@ -199,7 +200,7 @@ assign [class="Code|jetbrains-phpstorm|jetbrains-idea|jetbrains-webstorm|jetbrai
 assign [class="Alacritty|URxvt"] $ws2
 assign [class="Google-chrome|firefox|Brave-browser"] $ws3
 assign [class="Pamac-manager|Thunar|Pcmanfm|GParted"] $ws4
-assign [class="Postman|Filezilla|TeamViewer|Insomnia|Foxit Reader|Evince|wpspdf|pdf|wps"] $ws5 
+assign [class="Postman|Filezilla|TeamViewer|Insomnia|Foxit Reader|Evince|wpspdf|pdf|wps|obsidian"] $ws5 
 assign [class="obs|Clementine"] $ws6
 assign [class="Discord|TelegramDesktop|zoom|teams-for-linux"] $ws7
 assign [class="Spotify"] $ws8
