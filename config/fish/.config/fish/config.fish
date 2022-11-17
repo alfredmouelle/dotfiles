@@ -50,6 +50,8 @@ abbr -a -g gtsd "git stash drop"
 
 abbr -a -g fishsrc "source ~/.config/fish/config.fish"
 
+abbr -a -g xrc "xrdb -merge $HOME/.Xresources"
+
 # THEME PURE #
 set fish_function_path /home/kali/.config/fish/functions/theme-pure/functions/ $fish_function_path
 source /home/kali/.config/fish/functions/theme-pure/conf.d/pure.fish
