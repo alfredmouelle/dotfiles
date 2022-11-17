@@ -3,6 +3,11 @@
 ###############################
 set $mod Mod4
 
+# set_from_resource       $active       active
+# set_from_resource       $inactive     secondary
+# set_from_resource       $background   background
+# set_from_resource       $foreground   foreground
+
 # class			border	    backgr.   	text	     indicat   child_border
 client.focused          #172030     #172030     #C0CAF5      #F8CD7A   #C0CAF5
 client.focused_inactive #172030     #172030     #444B6A      #5A638C   #444B6A
@@ -13,48 +18,21 @@ client.focused_inactive #172030     #172030     #444B6A      #5A638C   #444B6A
 
 
 ##############################################
-#               AutoStart Apps               #
-##############################################
-exec --no-startup-id dunst
-exec --no-startup-id picom
-exec --no-startup-id shutter
-exec --no-startup-id redshift -l 49.443232:1.099971 -t 3000:6500 -l manual
-exec_always --no-startup-id numlockx on
-
-
-#exec --no-startup-id code
-exec --no-startup-id xdman
-exec --no-startup-id thunar
-exec --no-startup-id brave
-exec --no-startup-id obsidian
-exec --no-startup-id google-chrome-stable
-#exec --no-startup-id discord
-exec --no-startup-id i3-msg "workspace 2; exec urxvt"
-
-# Pamac Manager a besoin de ça pour gérer l'authentification
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-# Wifi manager
-exec --no-startup-id nm-applet
-
-# Suspend Manager.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dimblur
-
-# Gerer les layout du clavier
-exec --no-startup-id setxkbmap fr,us -option 'grp:shift_caps_toggle'
-
-##############################################
 #                 APPARENCE                  #
 ##############################################
+# Focus la fenêtre au survol
+focus_follows_mouse no
+
 # Police du systeme
 font pango:SF Pro Display 10
-# Wallpaper
+
+# Fond d'écran
 exec_always --no-startup-id feh --bg-scale $HOME/Pictures/lockscreen.jpg
 
 ###############################
 #         KEYBINDING          #
 ###############################
-# Controls volume key
+# Controle du volume
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down && $refresh_i3status
@@ -62,53 +40,47 @@ bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute && $refresh_i3sta
 bindsym XF86AudioMicMute exec --no-startup-id pulseaudio-ctl mute-input && $refresh_i3status
 bindsym Shift+XF86AudioMute exec --no-startup-id pulseaudio-ctl mute-input && $refresh_i3status
 
-# Controls light screen key
+# Controle de la luminosité de l'écran
 #bindsym XF86MonBrightnessUp exec light -s sysfs/backlight/intel_backlight -A 5
 #bindsym XF86MonBrightnessUp exec "echo +10 | sudo tee /sys/class/backlight/intel_backlight/brightness | bc > /sys/class/backlight/intel_backlight/brightness"
 #bindsym XF86MonBrightnessDown exec "echo -10 | sudo tee /sys/class/backlight/intel_backlight/brightness | bc < /sys/class/backlight/intel_backlight/brightness"
 #bindsym XF86MonBrightnessDown exec light -s sysfs/backlight/intel_backlight -U 5
 
-# Play / Pause Spotify
+# Control des différents lecteurs
 bindsym XF86AudioPlay exec playerctl -a play-pause
 bindsym XF86AudioPause exec playerctl -a play-pause
 bindsym XF86AudioNext exec playerctl -a next
 bindsym XF86AudioPrev exec playerctl -a previous
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# Toucher à maintenir pour déplacer une fenêtre flottante
 floating_modifier $mod
 
-# start a terminal
-# bindsym $mod+Return exec i3-msg 'workspace 2' && exec alacritty
+# Démarrer le terminal
 bindsym $mod+Return exec i3-sensible-terminal
-
-# Start pamac-manager
-# bindsym $mod+p exec i3-msg 'workspace 4' && exec pamac-manager
 
 # kill focused window
 bindsym $mod+Shift+x kill
+bindsym $mod+Shift+q kill
 bindsym $mod+x kill
+#bindsym $alt+F4 kill
 
-# Lock the screen
+# Vérouiller la session
 bindsym $mod+Control+l exec betterlockscreen -l dimblur
-#bindsym $mod+Control+l exec betterlockscreen -l dimblur -- --timestr="%H:%M"
-#bindsym $mod+Control+l exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i $HOME/Images/Wallpaper.png --nofork
 
-# Start rofi as application launcher
+# Rofi comme lanceur d'application
 bindsym $mod+d exec --no-startup-id rofi -show drun
 
-# change focus
+# Changer le focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+i focus up
 bindsym $mod+l focus right
 bindsym $mod+Left focus left
-bindsym $mod+Tab focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-bindsym $mod+Shift+Tab focus right
 
-# move focused window
+# Déplacer les fenêtre
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+i move up
@@ -118,7 +90,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal | vertical
+# Changer le mode de split (horizontal | vertical)
 bindsym $mod+h split h
 bindsym $mod+v split v
 
@@ -126,7 +98,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+z layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
@@ -136,21 +108,21 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+q focus child
 
 # Ouvrir l'exploreur de fichier
-bindsym $mod+t exec i3-msg 'workspace 4' && exec thunar
+bindsym $mod+e exec i3-msg 'workspace 4' && exec thunar
 
 # Capture d'écran
 bindsym Print exec shutter -s
 bindsym $mod+shift+s exec shutter -s
 
-# Reload configs
+# Recharger / Actualiser la conf
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Voulez vous vraiment vous deconnecter de i3 ? ' -B 'Deconnecter' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3 ? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 #######################################
 #          Workspace Manager          #
@@ -167,7 +139,7 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 
-# switch to workspace
+# Changmeent de Workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
@@ -181,7 +153,10 @@ bindsym $mod+0 workspace number $ws9
 bindsym $mod+Control+Right workspace next
 bindsym $mod+Control+Left workspace prev
 
-# move focused container to workspace
+# Ecran associé à chaque Workspace
+# workspace $ws1 output $monitorCenter
+
+# Déplacement vers un Workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
@@ -195,7 +170,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws9
 bindsym $mod+Control+Shift+Right move container to workspace next
 bindsym $mod+Control+Shift+Left move container to workspace prev
 
-# Assign Applications to specific workspace		
+# Force certaines apps à des wokspaces dédiés	
 assign [class="Code|jetbrains-phpstorm|jetbrains-idea|jetbrains-webstorm|jetbrains-fleet"] $ws1
 assign [class="Alacritty|URxvt"] $ws2
 assign [class="Google-chrome|firefox|Brave-browser"] $ws3
@@ -249,4 +224,36 @@ gaps inner 0
 smart_borders on
 smart_gaps on
 
+
+##############################################
+#               AutoStart Apps               #
+##############################################
+exec --no-startup-id dunst
+exec --no-startup-id picom
+exec --no-startup-id shutter
+exec --no-startup-id redshift -l 49.443232:1.099971 -t 3000:6500 -l manual
+exec_always --no-startup-id numlockx on
+
+#exec --no-startup-id code
+#exec --no-startup-id xdman
+exec --no-startup-id thunar
+exec --no-startup-id brave
+exec --no-startup-id obsidian
+exec --no-startup-id google-chrome-stable
+#exec --no-startup-id discord
+exec --no-startup-id i3-msg "workspace 2; exec urxvt"
+
+# Pamac Manager a besoin de ça pour gérer l'authentification
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# L'applet pour gérer les connexions réseaux
+exec --no-startup-id nm-applet
+
+# Vérouiller la session
+exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dimblur
+
+# Gerer les layout du clavier
+exec --no-startup-id setxkbmap fr,us -option 'grp:shift_caps_toggle'
+
+# Redémarre polybar quand on redémarre i3
 exec_always --no-startup-id "killall polybar; polybar -r default"
