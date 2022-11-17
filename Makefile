@@ -31,6 +31,7 @@ conf: ## Link mes confs à mon système
 	$(stow) fish
 	$(stow) git
 	$(stow) i3
+	$(stow) vim
 	$(stow) picom
 	$(stow) polybar
 	$(stow) rofi
@@ -41,4 +42,4 @@ restore: install conf ## Restore entièrement mon système
 
 .PHONY: test
 test:
-	$(stow) i3
+	$(stow) vim
