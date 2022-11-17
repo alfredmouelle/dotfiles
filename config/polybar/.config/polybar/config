@@ -1,15 +1,12 @@
 [colors]
-foreground = #fff
-background = #172030
-secondary = #777f88
-selection = #3D59A1
-underline = #f78166
-underline-2 = #99e3e4
-underline-3 = #34a7fa
+urgent = ${xrdb:urgent}
+secondary = ${xrdb:secondary}
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
 
-theme = #CBDCDB
-active = #33a5f6
-urgent = #DB4B4B
+theme = ${xrdb:theme}
+inactive = ${xrdb:inactive}
+highlight = ${xrdb:highlight}
 
 
 [bar/default]
@@ -60,8 +57,8 @@ format = <label-mode><label-state>
 label-mode-padding = 2
 
 label-focused = %icon%
-label-focused-underline = ${colors.underline}
-label-focused-foreground = ${colors.theme}
+label-focused-underline = ${colors.highlight}
+label-focused-foreground = ${colors.foreground}
 label-focused-padding = 7
 
 label-unfocused = %index%   %icon%
@@ -70,8 +67,8 @@ label-unfocused-foreground = ${colors.secondary}
 
 label-visible = %index%   %icon%
 label-visible-padding = 4
-label-visible-underline = ${colors.selection}
-label-visible-foreground = ${colors.active}
+label-visible-underline = ${colors.inactive}
+label-visible-foreground = ${colors.theme}
 
 label-urgent = %index%   %icon%
 label-urgent-padding = 4
@@ -98,7 +95,7 @@ label-connected = %{A1:nm-connection-editor:}%essid%%downspeed:9%%{A}
 format-disconnected = %{A1:nm-connection-editor:}%{A}
 
 ramp-signal-0 = 
-ramp-signal-foreground = #FFFFFF
+ramp-signal-foreground = ${colors.foreground}
 format-connected-padding = 0
 
 
@@ -108,7 +105,7 @@ interval = 5
 
 time =  %H:%M
 time-alt =  %A, %d %B %Y
-format-foreground = ${colors.active}
+format-foreground = ${colors.theme}
 label = %time%
 
 [module/volume]
@@ -132,7 +129,7 @@ full-at = 99
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.theme}
+format-full-prefix-foreground = ${colors.foreground}
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -158,13 +155,13 @@ format-spacing = 1
 label-open = 
 label-open-foreground = ${colors.urgent}
 label-close = 
-label-close-foreground = ${colors.theme}
+label-close-foreground = ${colors.foreground}
 label-separator = |
 label-separator-foreground = ${colors.secondary}
 
 menu-0-0 = 
 menu-0-0-exec = menu-open-1
-menu-0-0-foreground = ${colors.theme}
+menu-0-0-foreground = ${colors.foreground}
 menu-0-1 = 
 menu-0-1-foreground = ${colors.urgent}
 menu-0-1-exec = poweroff
@@ -172,14 +169,14 @@ menu-0-1-exec = poweroff
 menu-1-0 = 
 menu-1-0-exec = menu-open-0
 menu-1-1 = 
-menu-1-1-foreground = ${colors.theme}
+menu-1-1-foreground = ${colors.foreground}
 menu-1-1-exec = reboot
 
 ; ------------------------ Cheated Modules --------------------------------------------------
 [module/mic]
 type = custom/script
 tail = true
-label-foreground = ${colors.active}
+label-foreground = ${colors.theme}
 interval = 0
 
 exec = ~/.config/polybar/scripts/mic.sh &

@@ -37,11 +37,16 @@ Xft.hintstyle:		  hintslight
 ! ============
 !   Couleurs
 ! ============
-*secondary:  #444B6A
-*active:     #C0CAF5
-
 *.foreground:   #C0CAF5
-*.background:   #1A1B26
+*.background:   #172030
+*.secondary:  #444B6A
+*.highlight: #f78166
+*.inactive: #3D59A1
+*.theme: #33a5f6
+*.urgent: #DB4B4B
+*.active:     #C0CAF5
+
+
 *.cursorColor:  #C0CAF5
 * fading: 20
 *fadeColor: #5A638C
