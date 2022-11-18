@@ -255,5 +255,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dimbl
 # Gerer les layout du clavier
 exec --no-startup-id setxkbmap fr,us -option 'grp:shift_caps_toggle'
 
+# Set la bonne résolution et fréquence de rafraichissement de mon écran
+exec --no-startup-id xrandr -s 1440x900 -r 75
+
 # Redémarre polybar quand on redémarre i3
 exec_always --no-startup-id "killall polybar; polybar -r default"
