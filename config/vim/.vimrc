@@ -5,7 +5,6 @@ filetype plugin indent on
 syntax on
 set number
 set mouse=a
-set cursorline
 set autoindent
 set laststatus=2
 set clipboard=unnamedplus
