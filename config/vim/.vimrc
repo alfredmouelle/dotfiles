@@ -46,3 +46,10 @@ noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
+
+" Finder
+set path=.,**
+nnoremap <leader>f :find *
+nnoremap <leader>s :sfind *
+nnoremap <leader>v :vert sfind *
+nnoremap <leader>t :tabfind *
