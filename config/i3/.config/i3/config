@@ -234,7 +234,7 @@ exec --no-startup-id shutter
 exec --no-startup-id redshift -l 49.443232:1.099971 -t 3000:6500 -l manual
 exec_always --no-startup-id numlockx on
 
-#exec --no-startup-id code
+exec --no-startup-id code
 #exec --no-startup-id xdman
 exec --no-startup-id thunar
 exec --no-startup-id brave

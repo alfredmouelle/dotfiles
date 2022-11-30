@@ -8,3 +8,5 @@
 	prune = true
 [init]
 	defaultBranch = main
+[help]
+	autocorrect = 1
