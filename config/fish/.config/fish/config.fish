@@ -42,6 +42,7 @@ abbr -a -g mksvr "make server PM=pnpm"
 
 # Git
 abbr -a -g gtf "git fetch"
+abbr -a -g gtfp "git fetch --prune"
 abbr -a -g gtpl "git pull"
 abbr -a -g gtps "git push"
 abbr -a -g gts "git stash"

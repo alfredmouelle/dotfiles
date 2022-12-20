@@ -181,7 +181,7 @@ assign [class="Discord|TelegramDesktop|zoom|teams-for-linux"] $ws7
 assign [class="Spotify"] $ws8
 
 for_window [urgent=latest] focus
-for_window [class="Viewnior|Lxappearance|Xarchiver|Nm-connection-editor|Blueman-manager|GParted|mpv|Mousepad|Grub-customizer|Lightdm-gtk-greeter-settings|Pavucontrol|Shutter|feh|xdman-Main|jetbrains-toolbox"] floating enable
+for_window [class="Viewnior|Lxappearance|Xarchiver|Nm-connection-editor|Blueman-manager|GParted|mpv|Mousepad|Grub-customizer|Lightdm-gtk-greeter-settings|Pavucontrol|Shutter|feh|xdman-Main|jetbrains-toolbox|fdm|Free Download Manager"] floating enable
 for_window [class="Spotify|spotify"] move to workspace $ws8
 for_window [class="Discord|discord"] move to workspace $ws7
 for_window [class="jetbrains-phpstorm|jetbrains-idea"] move to workspace $ws1
@@ -235,7 +235,7 @@ exec --no-startup-id redshift -l 49.443232:1.099971 -t 3000:6500 -l manual
 exec_always --no-startup-id numlockx on
 
 exec --no-startup-id code
-#exec --no-startup-id xdman
+exec --no-startup-id fdm
 exec --no-startup-id thunar
 exec --no-startup-id brave
 exec --no-startup-id obsidian
