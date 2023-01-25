@@ -21,7 +21,7 @@ client.focused_inactive #172030     #172030     #444B6A      #5A638C   #444B6A
 #                 APPARENCE                  #
 ##############################################
 # Focus la fenêtre au survol
-focus_follows_mouse no
+focus_follows_mouse yes
 
 # Police du systeme
 font pango:SF Pro Display 10
@@ -181,7 +181,7 @@ assign [class="Discord|TelegramDesktop|zoom|teams-for-linux"] $ws7
 assign [class="Spotify"] $ws8
 
 for_window [urgent=latest] focus
-for_window [class="Viewnior|Lxappearance|Xarchiver|Nm-connection-editor|Blueman-manager|GParted|mpv|Mousepad|Grub-customizer|Lightdm-gtk-greeter-settings|Pavucontrol|Shutter|feh|xdman-Main|jetbrains-toolbox|fdm|Free Download Manager"] floating enable
+for_window [class="Viewnior|Lxappearance|Xarchiver|Nm-connection-editor|Blueman-manager|GParted|mpv|Mousepad|Grub-customizer|Lightdm-gtk-greeter-settings|Pavucontrol|Shutter|feh|xdman-Main|jetbrains-toolbox|cypress|Cypress|fdm|Free Download Manager"] floating enable
 for_window [class="Spotify|spotify"] move to workspace $ws8
 for_window [class="Discord|discord"] move to workspace $ws7
 for_window [class="jetbrains-phpstorm|jetbrains-idea"] move to workspace $ws1

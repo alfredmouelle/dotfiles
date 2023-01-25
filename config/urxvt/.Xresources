@@ -34,6 +34,8 @@ Xft.hinting:       	true
 Xft.hintstyle:		  hintslight
 ! Xft.lcdfilter:	  lcddefault
 
+Xcursor.size: 9
+
 ! ============
 !   Couleurs
 ! ============
