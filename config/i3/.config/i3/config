@@ -114,8 +114,8 @@ bindsym $mod+q focus child
 bindsym $mod+e exec i3-msg 'workspace 4' && exec thunar
 
 # Capture d'écran
-bindsym Print exec shutter -s
-bindsym $mod+shift+s exec shutter -s
+bindsym Print exec flameshot gui
+bindsym $mod+shift+s exec flameshot gui
 
 # Recharger / Actualiser la conf
 bindsym $mod+Shift+c reload
@@ -181,7 +181,7 @@ assign [class="Discord|TelegramDesktop|zoom|teams-for-linux"] $ws7
 assign [class="Spotify"] $ws8
 
 for_window [urgent=latest] focus
-for_window [class="Viewnior|Lxappearance|Xarchiver|Nm-connection-editor|Blueman-manager|GParted|mpv|Mousepad|Grub-customizer|Lightdm-gtk-greeter-settings|Pavucontrol|Shutter|feh|xdman-Main|jetbrains-toolbox|cypress|Cypress|fdm|Free Download Manager"] floating enable
+for_window [class="Viewnior|Lxappearance|Xarchiver|Nm-connection-editor|Blueman-manager|GParted|mpv|Mousepad|Grub-customizer|Lightdm-gtk-greeter-settings|Pavucontrol|feh|xdman-Main|jetbrains-toolbox|cypress|Cypress|fdm|Free Download Manager|flameshot"] floating enable
 for_window [class="Spotify|spotify"] move to workspace $ws8
 for_window [class="Discord|discord"] move to workspace $ws7
 for_window [class="jetbrains-phpstorm|jetbrains-idea"] move to workspace $ws1
@@ -230,12 +230,12 @@ smart_gaps on
 ##############################################
 exec --no-startup-id dunst
 exec --no-startup-id picom
-exec --no-startup-id shutter
+exec --no-startup-id flameshot
 exec --no-startup-id redshift -l 49.443232:1.099971 -t 3000:6500 -l manual
 exec_always --no-startup-id numlockx on
 
 exec --no-startup-id code
-exec --no-startup-id fdm
+#exec --no-startup-id fdm
 exec --no-startup-id thunar
 exec --no-startup-id brave
 exec --no-startup-id obsidian

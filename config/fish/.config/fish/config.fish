@@ -59,4 +59,10 @@ source /home/kali/.config/fish/functions/theme-pure/conf.d/pure.fish
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 
-source /home/kali/.phpbrew/phpbrew.fish
+# PHPBREW #
+abbr -a -g brew "phpbrew"
+abbr -a -g brewu "phpbrew use"
+abbr -a -g brewl "phpbrew list"
+abbr -a -g brewi "phpbrew install"
+abbr -a -g brewei "phpbrew ext install"
+abbr -a -g brewo "phpbrew switchh-off"
