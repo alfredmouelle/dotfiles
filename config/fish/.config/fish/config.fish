@@ -49,6 +49,26 @@ abbr -a -g gts "git stash"
 abbr -a -g gtsa "git stash apply"
 abbr -a -g gtsd "git stash drop"
 
+# Git Flow
+abbr -a -g gfi "git flow init"
+abbr -a -g gffs "git flow feature start"
+abbr -a -g gfff "git flow feature finish"
+abbr -a -g gfbs "git flow bugfix start"
+abbr -a -g gfbf "git flow bugfix finish"
+abbr -a -g gfrs "git flow release start"
+abbr -a -g gfrf "git flow release finish"
+abbr -a -g gfhs "git flow hotfix start"
+abbr -a -g gfhf "git flow hotfix finish"
+abbr -a -g gfss "git flow support start"
+
+# PHPBREW #
+abbr -a -g brew "phpbrew"
+abbr -a -g brewu "phpbrew use"
+abbr -a -g brewl "phpbrew list"
+abbr -a -g brewi "phpbrew install"
+abbr -a -g brewei "phpbrew ext install"
+abbr -a -g brewo "phpbrew switchh-off"
+
 abbr -a -g fishsrc "source ~/.config/fish/config.fish"
 
 abbr -a -g xrc "xrdb -merge $HOME/.Xresources"
@@ -58,11 +78,3 @@ set fish_function_path /home/kali/.config/fish/functions/theme-pure/functions/ $
 source /home/kali/.config/fish/functions/theme-pure/conf.d/pure.fish
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
-
-# PHPBREW #
-abbr -a -g brew "phpbrew"
-abbr -a -g brewu "phpbrew use"
-abbr -a -g brewl "phpbrew list"
-abbr -a -g brewi "phpbrew install"
-abbr -a -g brewei "phpbrew ext install"
-abbr -a -g brewo "phpbrew switchh-off"
