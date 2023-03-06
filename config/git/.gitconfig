@@ -1,6 +1,7 @@
 [core]
 	excludesFile = ~/.gitignore
 	autocrlf = input
+	editor = vim
 [user]
 	name = Alfred MOUELLE
 	email = alfredmouelle@gmail.com

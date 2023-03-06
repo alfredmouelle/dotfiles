@@ -253,7 +253,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dimblur
 
 # Gerer les layout du clavier
-exec --no-startup-id setxkbmap fr,us -option 'grp:shift_caps_toggle'
+# exec --no-startup-id setxkbmap fr,us -option 'grp:shift_caps_toggle'
+exec --no-startup-id setxkbmap fr
 
 # Set la bonne résolution et fréquence de rafraichissement de mon écran
 exec --no-startup-id xrandr -s 1440x900 -r 75
