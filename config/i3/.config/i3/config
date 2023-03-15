@@ -27,7 +27,7 @@ focus_follows_mouse yes
 font pango:SF Pro Display 10
 
 # Fond d'écran
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/lockscreen.jpg
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.jpg
 
 ###############################
 #         KEYBINDING          #
@@ -253,8 +253,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dimblur
 
 # Gerer les layout du clavier
-# exec --no-startup-id setxkbmap fr,us -option 'grp:shift_caps_toggle'
-exec --no-startup-id setxkbmap fr
+exec --no-startup-id setxkbmap fr,us -option 'grp:shift_caps_toggle'
 
 # Set la bonne résolution et fréquence de rafraichissement de mon écran
 exec --no-startup-id xrandr -s 1440x900 -r 75
