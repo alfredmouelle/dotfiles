@@ -41,10 +41,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pulseaudio-ctl mute-input && $refr
 bindsym Shift+XF86AudioMute exec --no-startup-id pulseaudio-ctl mute-input && $refresh_i3status
 
 # Controle de la luminosité de l'écran
-#bindsym XF86MonBrightnessUp exec light -s sysfs/backlight/intel_backlight -A 5
-#bindsym XF86MonBrightnessUp exec "echo +10 | sudo tee /sys/class/backlight/intel_backlight/brightness | bc > /sys/class/backlight/intel_backlight/brightness"
-#bindsym XF86MonBrightnessDown exec "echo -10 | sudo tee /sys/class/backlight/intel_backlight/brightness | bc < /sys/class/backlight/intel_backlight/brightness"
-#bindsym XF86MonBrightnessDown exec light -s sysfs/backlight/intel_backlight -U 5
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
 
 # Control des différents lecteurs
 bindsym XF86AudioPlay exec playerctl -a play-pause
@@ -181,7 +179,7 @@ assign [class="Discord|TelegramDesktop|zoom|teams-for-linux"] $ws7
 assign [class="Spotify"] $ws8
 
 for_window [urgent=latest] focus
-for_window [class="Viewnior|Lxappearance|Xarchiver|Nm-connection-editor|Blueman-manager|GParted|mpv|Mousepad|Grub-customizer|Lightdm-gtk-greeter-settings|Pavucontrol|feh|xdman-Main|jetbrains-toolbox|cypress|Cypress|fdm|Free Download Manager|flameshot"] floating enable
+for_window [class="Viewnior|Lxappearance|Xarchiver|Nm-connection-editor|Blueman-manager|GParted|mpv|Mousepad|Grub-customizer|Lightdm-gtk-greeter-settings|Pavucontrol|feh|xdman-Main|jetbrains-toolbox|cypress|Cypress|fdm|Free Download Manager|flameshot|Nvidia-settings"] floating enable
 for_window [class="Spotify|spotify"] move to workspace $ws8
 for_window [class="Discord|discord"] move to workspace $ws7
 for_window [class="jetbrains-phpstorm|jetbrains-idea"] move to workspace $ws1
@@ -253,7 +251,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dimblur
 
 # Gerer les layout du clavier
-exec --no-startup-id setxkbmap fr,us -option 'grp:shift_caps_toggle'
+exec --no-startup-id setxkbmap us,fr -option 'grp:shift_caps_toggle'
 
 # Set la bonne résolution et fréquence de rafraichissement de mon écran
 #exec --no-startup-id xrandr -s 1440x900 -r 75

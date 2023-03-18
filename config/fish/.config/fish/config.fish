@@ -75,6 +75,12 @@ abbr -a -g xrc "xrdb -merge $HOME/.Xresources"
 
 # THEME PURE #
 set fish_function_path /home/kali/.config/fish/functions/theme-pure/functions/ $fish_function_path
-source /home/kali/.config/fish/functions/theme-pure/conf.d/pure.fish
+#source /home/kali/.config/fish/functions/theme-pure/conf.d/pure.fish
+
+source /home/kali/.phpbrew/phpbrew.fish
+
+
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
+
+set -gx PATH "/opt/flutter/bin" $PATH

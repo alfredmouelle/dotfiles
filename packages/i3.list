@@ -3,9 +3,11 @@ rofi
 picom
 dunst
 polybar
+tumbler
 lxappearance
 polkit-gnome
 rxvt-unicode
 urxvt-clipboard
 betterlockscreen
+ffmpegthumbnailer
 urxvt-resize-font-git

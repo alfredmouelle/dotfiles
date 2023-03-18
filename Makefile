@@ -26,7 +26,7 @@ install: fonts system i3 base
 .PHONY: conf
 conf: ## Link mes confs à mon système
 	$(stow) urxvt
-	xrdb ~/.Xresources
+	xrdb -merge ~/.Xresources
 	$(stow) dunst
 	$(stow) fish
 	$(stow) git

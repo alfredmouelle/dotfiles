@@ -11,3 +11,5 @@
 	defaultBranch = main
 [help]
 	autocorrect = 1
+[safe]
+	directory = /opt/flutter
