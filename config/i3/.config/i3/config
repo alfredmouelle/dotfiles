@@ -219,7 +219,7 @@ exec --no-startup-id nm-applet
 exec_always --no-startup-id numlockx on
 exec --no-startup-id i3-msg "workspace 2; exec urxvt"
 exec --no-startup-id setxkbmap us,fr -option 'grp:shift_caps_toggle'
-exec --no-startup-id redshift -l 49.443232:1.099971 -t 3000:3000 -l manual
+exec --no-startup-id redshift-gtk -l 49.443232:1.099971 -t 3000:3000 -l manual
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dimblur
 
