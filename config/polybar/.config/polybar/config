@@ -29,7 +29,7 @@ font-3 = Font Awesome 6 Free Regular:size=9
 
 modules-left = i3
 modules-center = xwindow mic
-modules-right = volume date powermenu
+modules-right = redshift volume battery date powermenu
 
 tray-maxsize = 12
 tray-position = right

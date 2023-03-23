@@ -39,7 +39,3 @@ conf: ## Link mes confs à mon système
 
 .PHONY: restore
 restore: install conf ## Restore entièrement mon système
-
-.PHONY: test
-test:
-	$(stow) vim

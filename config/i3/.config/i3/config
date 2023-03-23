@@ -169,8 +169,8 @@ bindsym $mod+Control+Shift+Right move container to workspace next
 bindsym $mod+Control+Shift+Left move container to workspace prev
 
 # Force certaines apps à des wokspaces dédiés	
-assign [class="Code|jetbrains-phpstorm|jetbrains-idea|jetbrains-webstorm|jetbrains-fleet"] $ws1
-assign [class="Alacritty|URxvt"] $ws2
+assign [class="Code|jetbrains-phpstorm|jetbrains-idea|jetbrains-webstorm|jetbrains-fleet|jetbrains-studio"] $ws1
+assign [class="URxvt"] $ws2
 assign [class="Google-chrome|firefox|Brave-browser"] $ws3
 assign [class="Pamac-manager|Thunar|Pcmanfm|GParted"] $ws4
 assign [class="Postman|Filezilla|TeamViewer|Insomnia|Foxit Reader|Evince|wpspdf|pdf|wps|obsidian"] $ws5 
@@ -226,33 +226,28 @@ smart_gaps on
 ##############################################
 #               AutoStart Apps               #
 ##############################################
+
+## Core Apps & Utilities ##
 exec --no-startup-id dunst
 exec --no-startup-id picom
-exec --no-startup-id flameshot
-exec --no-startup-id redshift -l 49.443232:1.099971 -t 3000:6500 -l manual
-exec_always --no-startup-id numlockx on
-
-exec --no-startup-id code
-#exec --no-startup-id fdm
-exec --no-startup-id thunar
-exec --no-startup-id brave
-exec --no-startup-id obsidian
-exec --no-startup-id google-chrome-stable
-#exec --no-startup-id discord
-exec --no-startup-id i3-msg "workspace 2; exec urxvt"
-
-# Pamac Manager a besoin de ça pour gérer l'authentification
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-# L'applet pour gérer les connexions réseaux
 exec --no-startup-id nm-applet
-
-# Vérouiller la session
+exec_always --no-startup-id numlockx on
+exec --no-startup-id i3-msg "workspace 2; exec urxvt"
+exec --no-startup-id setxkbmap us,fr -option 'grp:shift_caps_toggle'
+exec --no-startup-id redshift -l 49.443232:1.099971 -t 3000:3000 -l manual
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dimblur
 
-# Gerer les layout du clavier
-exec --no-startup-id setxkbmap us,fr -option 'grp:shift_caps_toggle'
 
+## Workspace Apps ##
+#exec --no-startup-id fdm
+#exec --no-startup-id code
+exec --no-startup-id brave
+exec --no-startup-id thunar
+exec --no-startup-id flameshot
+#exec --no-startup-id obsidian
+exec --no-startup-id google-chrome-stable
+#exec --no-startup-id discord
 # Set la bonne résolution et fréquence de rafraichissement de mon écran
 #exec --no-startup-id xrandr -s 1440x900 -r 75
 

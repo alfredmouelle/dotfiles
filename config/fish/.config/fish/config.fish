@@ -11,6 +11,8 @@ function sudo
     end
 end
 
+
+
 # Pacman
 abbr -a -g pmcs "pacman -Ss"
 abbr -a -g pmcr "sudo pacman -Rc"
@@ -18,6 +20,8 @@ abbr -a -g pmci "sudo pacman -S"
 abbr -a -g pmccc "sudo pacman -Scc"
 abbr -a -g pmcu "sudo pacman -Sy"
 abbr -a -g pmcsu "sudo pacman -Syu"
+
+
 
 # Yay
 abbr -a -g yys "yay -Ss"
@@ -28,17 +32,19 @@ abbr -a -g yysu "yay -Syu"
 abbr -a -g yycc "yay -Sc"
 
 # Config
-abbr -a -g polyconf "vim $HOME/.config/polybar/config"
 abbr -a -g i3conf "vim $HOME/.config/i3/config"
+abbr -a -g polyconf "vim $HOME/.config/polybar/config"
 abbr -a -g dunstconf "vim $HOME/.config/dunst/dunstrc"
+abbr -a -g fishsrc "source ~/.config/fish/config.fish"
 
-# Short hand
-abbr -a -g vscup "yay -Sy && yay -S visual-studio-code-bin"
+
 
 # Aura Dev
 abbr -a -g mkcls "make clean"
 abbr -a -g mkup "make update PM=pnpm"
 abbr -a -g mksvr "make server PM=pnpm"
+
+
 
 # Git
 abbr -a -g gtf "git fetch"
@@ -48,6 +54,8 @@ abbr -a -g gtps "git push"
 abbr -a -g gts "git stash"
 abbr -a -g gtsa "git stash apply"
 abbr -a -g gtsd "git stash drop"
+
+
 
 # Git Flow
 abbr -a -g gfi "git flow init"
@@ -61,6 +69,8 @@ abbr -a -g gfhs "git flow hotfix start"
 abbr -a -g gfhf "git flow hotfix finish"
 abbr -a -g gfss "git flow support start"
 
+
+
 # PHPBREW #
 abbr -a -g brew "phpbrew"
 abbr -a -g brewu "phpbrew use"
@@ -69,18 +79,25 @@ abbr -a -g brewi "phpbrew install"
 abbr -a -g brewei "phpbrew ext install"
 abbr -a -g brewo "phpbrew switchh-off"
 
-abbr -a -g fishsrc "source ~/.config/fish/config.fish"
 
+
+# Shorthands # 
+abbr -a -g aurasrc "xrandr -s 1440x900 -r 75"
 abbr -a -g xrc "xrdb -merge $HOME/.Xresources"
-
-# THEME PURE #
-set fish_function_path /home/kali/.config/fish/functions/theme-pure/functions/ $fish_function_path
-#source /home/kali/.config/fish/functions/theme-pure/conf.d/pure.fish
-
-source /home/kali/.phpbrew/phpbrew.fish
+abbr -a -g vscup "yay -Sy && yay -S visual-studio-code-bin"
 
 
+
+# PATH Setting #
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 
-set -gx PATH "/opt/flutter/bin" $PATH
+set -gx FLUTTER_HOME "$HOME/fvm/default"
+set -gx PATH "$FLUTTER_HOME/bin" $PATH
+
+set -gx CHROME_EXECUTABLE "/usr/bin/google-chrome-stable"
+
+
+
+# Libs Sourcing #
+source /home/kali/.phpbrew/phpbrew.fish
