@@ -5,6 +5,10 @@ xorg
 light
 lightdm
 lightdm-gtk-greeter
+bluez
+blueman
+networkmanager
+network-manager-applet
 pulseaudio
 spotifyd
 playerctl

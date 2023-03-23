@@ -29,6 +29,8 @@ font pango:SF Pro Display 10
 # Fond d'écran
 exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.jpg
 
+
+
 ###############################
 #         KEYBINDING          #
 ###############################
@@ -56,7 +58,7 @@ floating_modifier $mod
 # Démarrer le terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
-# kill focused window
+# Fermer la fenêtre active
 bindsym $mod+Shift+x kill
 bindsym $mod+Shift+q kill
 bindsym $mod+x kill
@@ -99,13 +101,11 @@ bindsym $mod+w layout tabbed
 bindsym $mod+z layout toggle split
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
+# Alterner le focus entre les fênetres flottantes
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
+# Changement de la profondeur du focus
 bindsym $mod+a focus parent
-
-# focus the child container
 bindsym $mod+q focus child
 
 # Ouvrir l'exploreur de fichier
@@ -119,14 +119,14 @@ bindsym $mod+shift+s exec flameshot gui
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
-# exit i3 (logs you out of your X session)
+# Quitter la session i3
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3 ? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+
 
 #######################################
 #          Workspace Manager          #
 #######################################
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -154,7 +154,7 @@ bindsym $mod+Control+Left workspace prev
 # Ecran associé à chaque Workspace
 # workspace $ws1 output $monitorCenter
 
-# Déplacement vers un Workspace
+## Déplacement vers un Workspace ##
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
@@ -168,7 +168,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws9
 bindsym $mod+Control+Shift+Right move container to workspace next
 bindsym $mod+Control+Shift+Left move container to workspace prev
 
-# Force certaines apps à des wokspaces dédiés	
+## Force certaines apps à des wokspaces dédiés ##
 assign [class="Code|jetbrains-phpstorm|jetbrains-idea|jetbrains-webstorm|jetbrains-fleet|jetbrains-studio"] $ws1
 assign [class="URxvt"] $ws2
 assign [class="Google-chrome|firefox|Brave-browser"] $ws3
@@ -186,41 +186,26 @@ for_window [class="jetbrains-phpstorm|jetbrains-idea"] move to workspace $ws1
 for_window [class="TelegramDesktop"] focus
 
 
-# resize window (you can also use the mouse for that)
+## Redimentionnement de la fenêtre ##
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
         bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
+        # Mêmes shortcuts mais avec les touches directionnelles
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
+        # Retour au mode normal
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
-
-###################
-#     I3 Gaps     #
-###################
-for_window [class="^.*"] border pixel 1
-for_window [class=".*"] title_format "  %title"
-gaps inner 0
-smart_borders on
-smart_gaps on
 
 
 ##############################################
@@ -247,9 +232,19 @@ exec --no-startup-id thunar
 exec --no-startup-id flameshot
 #exec --no-startup-id obsidian
 exec --no-startup-id google-chrome-stable
-#exec --no-startup-id discord
-# Set la bonne résolution et fréquence de rafraichissement de mon écran
-#exec --no-startup-id xrandr -s 1440x900 -r 75
 
-# Redémarre polybar quand on redémarre i3
+
+
+###################
+#     I3 Gaps     #
+###################
+for_window [class="^.*"] border pixel 1
+for_window [class=".*"] title_format "  %title"
+gaps inner 0
+smart_borders on
+smart_gaps on
+
+
+
+## Redémarre polybar quand on redémarre i3 ##
 exec_always --no-startup-id "killall polybar; polybar -r default"
