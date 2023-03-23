@@ -29,7 +29,7 @@ font-3 = Font Awesome 6 Free Regular:size=9
 
 modules-left = i3
 modules-center = xwindow mic
-modules-right = redshift volume battery date powermenu
+modules-right = volume battery date powermenu
 
 tray-maxsize = 12
 tray-position = right
@@ -195,12 +195,7 @@ format-underline = #1db954
 ;control players (optional)
 click-left = playerctl --player=spotify play-pause 
 ;click-right = playerctl --player=spotify next 
-;click-middle = playerctl --player=spotify previous 
-
-[module/redshift]
-type = custom/script
-interval = 5
-exec = ~/.config/polybar/scripts/redshift.sh
+;click-middle = playerctl --player=spotify previous
 
 
 [module/xkeyboard]
