@@ -3,6 +3,7 @@ mysql
 docker
 fvm-bin
 libxslt
+composer
 brave-bin
 pkg-config
 openssl-1.1
