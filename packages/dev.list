@@ -1,3 +1,11 @@
+php
+mysql
+docker
+fvm-bin
+libxslt
 brave-bin
+pkg-config
+openssl-1.1
+docker-compose
 jetbrains-toolbox
 visual-studio-code-bin

@@ -37,9 +37,30 @@ install: fonts system i3 base
 
 .PHONY: services
 services: ## Active les services
+	chsh -s /bin/fish kali
 	systemctl enable polkit
 	systemctl enable lightdm
 	systemctl enable NetworkManager
+
+
+
+.PHONY: dev
+dev: ## Installe les packages de dev
+	xargs -d '\n' -a packages/base.list yay --noconfirm --needed -S
+	mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+	systemctl enable mysql
+	#usermod -aG mysql kali
+
+	## Phpbrew
+	curl -L -O https://github.com/phpbrew/phpbrew/releases/latest/download/phpbrew.phar
+	chmod +x phpbrew.phar
+	mv phpbrew.phar /usr/local/bin/phpbrew
+	sudo -su kali phpbrew init
+
+	## Volta
+	sudo -su kali curl https://get.volta.sh | bash
+	sudo -su kali volta install node
+	sudo -su kali volta install pnpm
 
 
 
@@ -47,14 +68,14 @@ services: ## Active les services
 conf: ## Link mes confs à mon système
 	$(stow) urxvt
 	xrdb -merge ~/.Xresources
-	$(stow) dunst
-	$(stow) fish
-	$(stow) git
 	$(stow) i3
+	$(stow) git
 	$(stow) vim
+	$(stow) rofi
+	$(stow) fish
+	$(stow) dunst
 	$(stow) picom
 	$(stow) polybar
-	$(stow) rofi
 	cp ./config/git/.gitignore ~/.gitignore
 
 
