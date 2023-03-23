@@ -19,3 +19,4 @@ neofetch
 polkit
 polkit-gnome
 gnome-keyring
+python-gobject
