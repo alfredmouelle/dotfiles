@@ -82,6 +82,7 @@ abbr -a -g brewo "phpbrew switchh-off"
 
 
 # Shorthands # 
+abbr -a -g pa "php artisan"
 abbr -a -g aurasrc "xrandr -s 1440x900 -r 75"
 abbr -a -g xrc "xrdb -merge $HOME/.Xresources"
 abbr -a -g vscup "yay -Sy && yay -S visual-studio-code-bin"
