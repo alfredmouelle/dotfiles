@@ -47,28 +47,42 @@ services: ## Active les services
 
 
 .PHONY: dev
-dev: ## Installe les packages de dev
-	xargs -d '\n' -a packages/base.list yay --noconfirm --needed -S
-	mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-	systemctl enable mysql
-	#usermod -aG mysql $$USER
+dev: ## Installe les packages de dev (à executer après tout le setup)
+	xargs -d '\n' -a packages/dev.list yay --noconfirm --needed -S
+
+	## MySQL
+	sudo -su $$USER <<'EOF'
+		mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+		systemctl enable mysql
+		usermod -aG mysql $$USER
+	EOF
+	
 
 	## Phpbrew
-	curl -L -O https://github.com/phpbrew/phpbrew/releases/latest/download/phpbrew.phar
-	chmod +x phpbrew.phar
-	mv phpbrew.phar /usr/local/bin/phpbrew
-	sudo -su $$USER phpbrew init
+
+	su $$USER <<'EOF'
+		curl -L -O https://github.com/phpbrew/phpbrew/releases/latest/download/phpbrew.phar
+		chmod +x phpbrew.phar
+		sudo mv phpbrew.phar /usr/local/bin/phpbrew
+		phpbrew init
+	EOF
 
 	## Volta
-	sudo -su $$USER curl https://get.volta.sh | bash
-	sudo -su $$USER volta install node
-	sudo -su $$USER volta install pnpm
+	su $$USER <<'EOF'
+		curl https://get.volta.sh | bash
+		volta install node
+		volta install pnpm
+	EOF
+	
 
 	## VimPlug
-	sudo -su $$USER curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+	su $$USER curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-
+	## Oh My fish
+	su $$USER curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+	omf install pure
+	
 
 .PHONY: conf
 conf: ## Link mes confs à mon système
