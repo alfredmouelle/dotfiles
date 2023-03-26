@@ -13,7 +13,7 @@ end
 
 
 
-# Pacman
+## Pacman ##
 abbr -a -g pmcs "pacman -Ss"
 abbr -a -g pmcr "sudo pacman -Rc"
 abbr -a -g pmci "sudo pacman -S"
@@ -23,7 +23,7 @@ abbr -a -g pmcsu "sudo pacman -Syu"
 
 
 
-# Yay
+## Yay ##
 abbr -a -g yys "yay -Ss"
 abbr -a -g yyi "yay -S"
 abbr -a -g yyr "yay -Rc"
@@ -31,7 +31,9 @@ abbr -a -g yyu "yay -Sy"
 abbr -a -g yysu "yay -Syu"
 abbr -a -g yycc "yay -Sc"
 
-# Config
+
+
+## Config ##
 abbr -a -g i3conf "vim $HOME/.config/i3/config"
 abbr -a -g polyconf "vim $HOME/.config/polybar/config"
 abbr -a -g dunstconf "vim $HOME/.config/dunst/dunstrc"
@@ -39,14 +41,7 @@ abbr -a -g fishsrc "source ~/.config/fish/config.fish"
 
 
 
-# Aura Dev
-abbr -a -g mkcls "make clean"
-abbr -a -g mkup "make update PM=pnpm"
-abbr -a -g mksvr "make server PM=pnpm"
-
-
-
-# Git
+## Git ##
 abbr -a -g gtf "git fetch"
 abbr -a -g gtfp "git fetch --prune"
 abbr -a -g gtpl "git pull"
@@ -57,7 +52,7 @@ abbr -a -g gtsd "git stash drop"
 
 
 
-# Git Flow
+## Git Flow ##
 abbr -a -g gfi "git flow init"
 abbr -a -g gffs "git flow feature start"
 abbr -a -g gfff "git flow feature finish"
@@ -71,7 +66,7 @@ abbr -a -g gfss "git flow support start"
 
 
 
-# PHPBREW #
+## PHPBREW ##
 abbr -a -g brew "phpbrew"
 abbr -a -g brewu "phpbrew use"
 abbr -a -g brewl "phpbrew list"
@@ -81,7 +76,7 @@ abbr -a -g brewo "phpbrew switchh-off"
 
 
 
-# Shorthands # 
+## Shorthands ## 
 abbr -a -g pa "php artisan"
 abbr -a -g aurasrc "xrandr -s 1440x900 -r 75"
 abbr -a -g xrc "xrdb -merge $HOME/.Xresources"
@@ -90,7 +85,7 @@ abbr -a -g lockcache "betterlockscreen -u ~/Pictures/lockscreen.jpg -w dim"
 
 
 
-# PATH Setting #
+## PATH Setting ##
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 
@@ -101,5 +96,5 @@ set -gx CHROME_EXECUTABLE "/usr/bin/google-chrome-stable"
 
 
 
-# Libs Sourcing #
+## Libs Sourcing ##
 source /home/kali/.phpbrew/phpbrew.fish
