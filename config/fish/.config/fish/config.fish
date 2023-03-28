@@ -94,6 +94,8 @@ set -gx PATH "$FLUTTER_HOME/bin" $PATH
 
 set -gx CHROME_EXECUTABLE "/usr/bin/google-chrome-stable"
 
+set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 
 
 ## Libs Sourcing ##

@@ -40,10 +40,8 @@ install: fonts system i3 base
 .PHONY: services
 services: ## Active les services
 	chsh -s /bin/fish $$USER
-	systemctl enable polkit
-	systemctl enable lightdm
-	systemctl enable NetworkManager
-
+	su $$USER systemctl enable ssh-agent --user
+	sudo systemctl enable polkit lightdm NetworkManager
 
 
 .PHONY: dev
@@ -96,6 +94,7 @@ conf: ## Link mes confs à mon système
 	$(stow) dunst
 	$(stow) picom
 	$(stow) polybar
+	$(stow) ssh-agent
 	cp ./config/git/.gitignore ~/.gitignore
 
 
