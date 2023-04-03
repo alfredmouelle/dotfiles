@@ -24,7 +24,7 @@ client.focused_inactive #172030     #172030     #444B6A      #5A638C   #444B6A
 focus_follows_mouse yes
 
 # Police du systeme
-font pango:SF Pro Display 10
+font pango:SF Pro Text 10
 
 # Fond d'écran
 exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.jpg

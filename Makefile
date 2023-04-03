@@ -65,6 +65,7 @@ dev: ## Installe les packages de dev (à executer après tout le setup)
 		phpbrew init
 	EOF
 
+
 	## Volta
 	su $$USER <<'EOF'
 		curl https://get.volta.sh | bash
@@ -77,9 +78,12 @@ dev: ## Installe les packages de dev (à executer après tout le setup)
 	su $$USER curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+
 	## Oh My fish
-	su $$USER curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-	omf install pure
+	su $$USER <<'EOF'
+		curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+		omf install pure
+	EOF
 	
 
 .PHONY: conf
