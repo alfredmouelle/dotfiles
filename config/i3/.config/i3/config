@@ -56,11 +56,11 @@ bindsym XF86AudioPrev exec playerctl -a previous
 floating_modifier $mod
 
 # Démarrer le terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # Fermer la fenêtre active
 bindsym $mod+Shift+x kill
-bindsym $mod+Shift+q kill
+# bindsym $mod+Shift+q kill
 bindsym $mod+x kill
 #bindsym $alt+F4 kill
 
@@ -179,7 +179,7 @@ assign [class="Discord|TelegramDesktop|zoom|teams-for-linux"] $ws7
 assign [class="Spotify"] $ws8
 
 for_window [urgent=latest] focus
-for_window [class="Viewnior|Lxappearance|Xarchiver|Nm-connection-editor|Blueman-manager|GParted|mpv|Mousepad|Grub-customizer|Lightdm-gtk-greeter-settings|Pavucontrol|feh|xdman-Main|jetbrains-toolbox|cypress|Cypress|fdm|Free Download Manager|flameshot|Nvidia-settings|Gestures"] floating enable
+for_window [class="Viewnior|Lxappearance|Xarchiver|Nm-connection-editor|Blueman-manager|GParted|mpv|Mousepad|Grub-customizer|Lightdm-gtk-greeter-settings|Pavucontrol|feh|xdman-Main|jetbrains-toolbox|cypress|Cypress|fdm|Free Download Manager|flameshot|Nvidia-settings|Gestures|Tartube"] floating enable
 for_window [class="Spotify|spotify"] move to workspace $ws8
 for_window [class="Discord|discord"] move to workspace $ws7
 for_window [class="jetbrains-phpstorm|jetbrains-idea"] move to workspace $ws1

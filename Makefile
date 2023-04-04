@@ -88,18 +88,20 @@ dev: ## Installe les packages de dev (à executer après tout le setup)
 
 .PHONY: conf
 conf: ## Link mes confs à mon système
-	$(stow) urxvt
-	xrdb -merge ~/.Xresources
-	$(stow) i3
-	$(stow) git
-	$(stow) vim
-	$(stow) rofi
-	$(stow) fish
-	$(stow) dunst
-	$(stow) picom
-	$(stow) polybar
-	$(stow) ssh-agent
-	cp ./config/git/.gitignore ~/.gitignore
+	su $$USER <<'EOF'
+		$(stow) urxvt
+		xrdb -merge ~/.Xresources
+		$(stow) i3
+		$(stow) git
+		$(stow) vim
+		$(stow) rofi
+		$(stow) fish
+		$(stow) dunst
+		$(stow) picom
+		$(stow) polybar
+		$(stow) ssh-agent
+		cp ./config/git/.gitignore ~/.gitignore
+	EOF
 
 
 

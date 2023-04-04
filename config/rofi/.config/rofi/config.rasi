@@ -1,8 +1,8 @@
 configuration {
-  display-drun: " ";
+  display-drun: " ";
   display-window: "Windows:";
   drun-display-format: "{name}";
-  font: "SF Pro Display Medium 11";
+  font: "SF Pro Text Medium 10";
   modi: "window,run,drun";
   show-icons: true;
   line-margin: 20;
