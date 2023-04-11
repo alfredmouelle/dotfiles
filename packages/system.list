@@ -4,11 +4,13 @@ nano
 stow
 xorg
 light
+hwinfo
 lightdm
 lightdm-gtk-greeter
 bluez
 blueman
 networkmanager
+grub-customizer
 network-manager-applet
 pulseaudio
 spotifyd
