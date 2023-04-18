@@ -43,7 +43,7 @@ Xcursor.size: 9
 *.foreground:   #C0CAF5
 *.background:   #172030
 *.secondary:  #444B6A
-*.highlight: #f78166
+*.highlight: #00D3A7
 *.inactive: #3D59A1
 *.theme: #33a5f6
 *.urgent: #DB4B4B
