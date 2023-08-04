@@ -27,7 +27,7 @@ font-2 = Font Awesome 6 Brands:pixelsize=9
 font-3 = Font Awesome 6 Free Regular:size=9
 
 modules-left = i3
-modules-center = ram separator date mic separator cpu
+modules-center = ram separator volumeIcon date mic separator cpu
 modules-right = volume battery powermenu
 
 tray-maxsize = 12
@@ -110,6 +110,19 @@ time =  %H:%M
 time-alt =  %A, %d %B %Y
 format-foreground = ${colors.theme}
 label = %time%
+
+
+[module/volumeIcon]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume>
+label-muted = 
+label-muted-foreground = ${colors.urgent}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
 
 [module/volume]
 type = internal/pulseaudio
