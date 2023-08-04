@@ -85,6 +85,17 @@ abbr -a -g lockcache "betterlockscreen -u ~/Pictures/lockscreen.jpg -w dim"
 
 
 
+## Node Package Manager ## 
+abbr -a -g pn "npm"
+abbr -a -g pnx "npx"
+abbr -a -g pni "npm i"
+abbr -a -g pnr "npm run"
+abbr -a -g pnb "npm build"
+abbr -a -g pns "npm start"
+abbr -a -g pnu "npm update"
+
+
+
 ## PATH Setting ##
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
