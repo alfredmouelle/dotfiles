@@ -12,9 +12,8 @@ highlight = ${xrdb:highlight}
 [bar/default]
 enable-ipc = true
 height = 27
-top = true
 fixed-center = true
-background = ${colors.background}
+; background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
@@ -28,8 +27,8 @@ font-2 = Font Awesome 6 Brands:pixelsize=9
 font-3 = Font Awesome 6 Free Regular:size=9
 
 modules-left = i3
-modules-center = xwindow mic
-modules-right = volume battery date powermenu
+modules-center = ram separator date mic separator cpu
+modules-right = volume battery powermenu
 
 tray-maxsize = 12
 tray-position = right
@@ -38,6 +37,10 @@ tray-padding = 0
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
 
 [module/xwindow]
 type = internal/xwindow
@@ -225,6 +228,28 @@ inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
 ;card = radeon_bl0
+
+[module/ram]
+type = internal/memory
+interval = 2
+format-prefix = "RAM "
+format-prefix-foreground = ${colors.primary}
+label = %percentage_used:2%%
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU "
+format-prefix-foreground = ${colors.primary}
+label = %percentage:2%%
+
+
+[module/separator]
+type = custom/text
+content = "|"
+content-foreground = ${colors.secondary}
+
 
 [global/wm]
 margin-top = 5
