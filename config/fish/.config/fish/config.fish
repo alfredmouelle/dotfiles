@@ -102,6 +102,7 @@ set -gx PATH "$VOLTA_HOME/bin" $PATH
 
 set -gx FLUTTER_HOME "$HOME/fvm/default"
 set -gx PATH "$FLUTTER_HOME/bin" $PATH
+# set -gx TERM "xterm-256color"
 
 set -gx CHROME_EXECUTABLE "/usr/bin/google-chrome-stable"
 
@@ -111,3 +112,10 @@ set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 ## Libs Sourcing ##
 source $HOME/.phpbrew/phpbrew.fish
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
+# oh-my-posh init fish | source
+oh-my-posh init fish --config ~/.config/omp/amro.omp.json | source

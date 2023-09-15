@@ -18,6 +18,7 @@ playerctl
 pavucontrol
 pulseaudio-ctl
 bottom
+alacritty
 neofetch
 polkit
 polkit-gnome

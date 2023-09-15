@@ -99,6 +99,7 @@ conf: ## Link mes confs à mon système
 		$(stow) dunst
 		$(stow) picom
 		$(stow) polybar
+		$(stow) alacritty
 		$(stow) ssh-agent
 		cp ./config/git/.gitignore ~/.gitignore
 	EOF
