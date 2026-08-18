@@ -15,18 +15,20 @@ set hlsearch
 " Activer l'auto complétion des fichiers en appuyant sur TAB
 set wildmenu
 
+set termguicolors
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'arcticicestudio/nord-vim'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 call plug#end()
 
 " Theme
 try
 
-colorscheme nord
+colorscheme catppuccin_mocha
 
 catch /^Vim\%((\a\+)\)\=:E185/
 
@@ -34,7 +36,7 @@ catch /^Vim\%((\a\+)\)\=:E185/
 
 endtry
 
-let g:lightline = {'colorscheme': 'nord'}
+let g:lightline = {'colorscheme': 'catppuccin_mocha'}
 
 " Wildmenu
 set wildmode=list:full

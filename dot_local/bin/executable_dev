@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+TARGET="$1"
+
+if [ -z "$TARGET" ]; then
+  PROJECT_DIR="$PWD"
+elif [ -d "$TARGET" ]; then
+  PROJECT_DIR="$(cd "$TARGET" && pwd)"
+elif [ -d "$HOME/Developer/$TARGET" ]; then
+  PROJECT_DIR="$(cd "$HOME/Developer/$TARGET" && pwd)"
+else
+  MATCH=$(find "$HOME/Developer" -maxdepth 3 -type d -name "$TARGET" 2>/dev/null | head -n 1)
+  if [ -n "$MATCH" ]; then
+    PROJECT_DIR="$MATCH"
+  else
+    echo "Project not found: $TARGET"
+    exit 1
+  fi
+fi
+
+SESSION_NAME=$(basename "$PROJECT_DIR" | tr '.' '_')
+
+if ! tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+  tmux new-session -d -s "$SESSION_NAME" -n "Agents" -c "$PROJECT_DIR"
+
+  tmux new-window -t "$SESSION_NAME:2" -n "Server & Commands" -c "$PROJECT_DIR"
+  if [ -f "$PROJECT_DIR/package.json" ]; then
+    tmux send-keys -t "$SESSION_NAME:2.1" "pnpm dev"
+  fi
+  tmux split-window -h -t "$SESSION_NAME:2" -c "$PROJECT_DIR"
+
+  tmux select-window -t "$SESSION_NAME:1"
+fi
+
+if [ -n "$TMUX" ]; then
+  tmux switch-client -t "$SESSION_NAME"
+else
+  tmux attach-session -t "$SESSION_NAME"
+fi

@@ -6,12 +6,13 @@ Personal configuration and developer environment for macOS, managed declarativel
 
 ## What is included
 
-- **Shell**: Zsh configuration (`.zshrc`) with optimized aliases (`dot`, `g`, `p`, etc.) and tools (`fnm`, `bun`, `pnpm`).
-- **Git**: Global `.gitconfig` settings.
-- **Editors**:
-  - **Vim**: Minimal `.vimrc` with Nord theme and `vim-plug`.
-  - **Zed**: Custom `settings.json` and `keymap.json`.
+- **Shell**: Zsh (`.zshrc`) with concise aliases (`g`, `p`, `cc`, `ag`, `tk`, `tks`) and runtimes (`fnm`, `bun`, `pnpm`).
+- **Multiplexer & Workspaces**: Tmux (`.tmux.conf`) with Catppuccin theme, auto-bootstrapped TPM plugins (`resurrect`, `continuum`), and universal workspace launcher (`~/.local/bin/dev`).
 - **Terminal & Font**: Ghostty configuration (`~/.config/ghostty/config`) and `GeistMono Nerd Font Mono`.
+- **Git**: Global `.gitconfig` and `git-delta`.
+- **Editors**:
+  - **Vim**: Minimal `.vimrc` with Catppuccin Mocha theme and `vim-plug`.
+  - **Zed**: Custom `settings.json` and `keymap.json`.
 - **AI & Agents**: Antigravity / Claude Code skills, subagents, and guidelines (`~/.agents/`).
 
 ---
@@ -28,23 +29,28 @@ brew install chezmoi
 ```bash
 chezmoi init --apply alfredmouelle
 ```
-*This automatically deploys configs, installs Homebrew packages (`Brewfile`), configures Node.js 24.19.0 via `fnm`, installs `bun`, Claude Code, Antigravity CLI (`agy`), creates standard `~/Developer` directories, and installs Vim plugins.*
+*Automatically deploys configs, installs Homebrew packages (`Brewfile`), configures Node.js via `fnm`, installs `bun`, Claude Code, Antigravity CLI, creates `~/Developer` directories, installs Vim plugins, and auto-bootstraps Tmux TPM plugins on first launch.*
 
 ---
 
 ## Daily Workflow
 
-Shorthand aliases included in `.zshrc`:
+### Dotfiles Management
 
 | Action | Command | Description |
 | :--- | :--- | :--- |
-| **Track a new file** | `dota ~/.filename` | Track and import file into chezmoi |
-| **Edit a tracked file** | `dote ~/.filename` | Edit directly and apply on save |
-| **Preview diff** | `dotd` | View diff between home and dotfiles repo |
-| **Apply changes** | `dot` / `dot apply` | Apply repository state to machine |
-| **Check status** | `dots` | Show modified / untracked status |
-| **List tracked files** | `dotl` | List all tracked files (`managed`) |
-| **Update from remote** | `dotu` | Pull remote changes and apply |
-| **Open repo directory** | `dotc` | Spawn subshell inside the dotfiles repo |
-| **Quick commit & push** | `dotp "message"` | Stage all changes, commit, and push |
+| **Track / Update file** | `dota ~/.filename` | Track or update file in chezmoi |
+| **Preview diff** | `dotd` | View diff against repository |
+| **Update from remote** | `dot update` | Pull remote changes and reload shell |
+| **Commit & push** | `dotp "message"` | Stage all changes, commit, and push |
 
+### Workspace & Tmux
+
+| Action | Command / Shortcut | Description |
+| :--- | :--- | :--- |
+| **Open workspace** | `dev <project>` | Launch or attach 2-window session (`Agents` + `Server & Commands`) |
+| **Switch windows** | `Option + Tab` | Instant toggle between the 2 active windows |
+| **Switch panes** | `Ctrl + h / j / k / l` | Navigate left, down, up, right |
+| **Quick action menu** | `Ctrl-a Space` | Visual popup menu for splits, tabs, and sessions |
+| **Kill session** | `tk <project>` | Kill specific project session |
+| **Kill server** | `tks` | Kill entire tmux server |

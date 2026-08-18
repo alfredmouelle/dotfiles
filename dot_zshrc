@@ -24,6 +24,10 @@ alias cc="claude --dangerously-skip-permissions"
 alias ccc="claude --dangerously-skip-permissions -c"
 alias ag="agy --dangerously-skip-permissions"
 
+# Tmux
+alias tk="tmux kill-session -t"
+alias tks="tmux kill-server"
+
 # Chezmoi
 unalias dot 2>/dev/null
 dot() {
@@ -37,12 +41,7 @@ dot() {
 }
 
 alias dota="chezmoi add"
-alias dote="chezmoi edit"
 alias dotd="chezmoi diff"
-alias dots="chezmoi status"
-alias dotl="chezmoi managed"
-alias dotc="chezmoi cd"
-alias dotu="dot update"
 
 dotp() {
   chezmoi git add -A
