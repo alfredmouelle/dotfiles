@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "OTEL_METRICS_EXPORTER": "none"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(sudo *)",
+      "Bash(curl * | bash)",
+      "Bash(wget * | bash)",
+      "Read(./.env)",
+      "Read(./.env.production)",
+      "Read(./**/.env)",
+      "Read(./**/.env.production)",
+      "Read(./**/*.pem)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)"
+    ],
+    "defaultMode": "bypassPermissions"
+  },
+  "model": "opus[1m]",
+  "fallbackModel": [
+    "sonnet",
+    "default"
+  ],
+  "statusLine": {
+    "type": "command",
+    "command": "sh ~/.claude/statusline-command.sh"
+  },
+  "language": "French",
+  "effortLevel": "medium",
+  "tui": "fullscreen",
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  },
+  "autoMemoryEnabled": false,
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "auto",
+  "autoCompactEnabled": true,
+  "remoteControlAtStartup": false,
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "voiceEnabled": true
+}

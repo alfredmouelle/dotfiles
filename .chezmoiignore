@@ -1,3 +1,8 @@
 README.md
+AGENTS.md
+CLAUDE.md
 .gitignore
 .DS_Store
+.agents
+.claude
+
