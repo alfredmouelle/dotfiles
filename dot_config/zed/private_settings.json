@@ -1,0 +1,55 @@
+{
+  "cli_default_open_behavior": "new_window",
+  "base_keymap": "VSCode",
+  "icon_theme": "Symbols Icon Theme",
+  "theme": {
+    "mode": "system",
+    "dark": "Tokyo Night",
+    "light": "One Light",
+  },
+  "autosave": "on_focus_change",
+  "hover_popover_enabled": false,
+  "hover_popover_delay": 2500,
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "buffer_font_family": "GeistMono Nerd Font Mono",
+  "buffer_font_weight": 500,
+  "buffer_line_height": "comfortable",
+  "tab_size": 2,
+  "wrap_guides": [],
+  "show_whitespaces": "trailing",
+  "ensure_final_newline_on_save": true,
+  "remove_trailing_whitespace_on_save": true,
+  "format_on_save": "on",
+  "auto_signature_help": true,
+  "inlay_hints": {
+    "enabled": false,
+    "show_type_hints": true,
+    "toggle_on_modifiers_press": {
+      "alt": true,
+    },
+    "edit_debounce_ms": 700,
+    "scroll_debounce_ms": 50,
+    "show_parameter_hints": true,
+  },
+  "project_panel": {
+    "dock": "left",
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": true,
+    },
+  },
+  "git_panel": {
+    "tree_view": true,
+    "dock": "left",
+  },
+  "terminal": {
+    "dock": "right",
+  },
+  "use_expand_selection_by_subwords": true,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+}

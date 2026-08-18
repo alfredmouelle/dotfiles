@@ -1,0 +1,82 @@
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+alias zcfg="vim ~/.zshrc"
+alias zsrc="source ~/.zshrc"
+
+alias p=pnpm
+alias g=git
+alias ga='git add'
+alias gb='git branch'
+alias gbc='git checkout'
+alias gcb='git checkout -b'
+alias gc='git commit -m'
+alias gd='git diff'
+alias gf='git fetch --prune'
+alias gl='git pull'
+alias gm='git merge'
+alias gp='git push'
+alias gpl='git pull'
+alias gr='git remote'
+alias brewup='brew update & brew upgrade'
+
+# Claude & Antigravity
+alias cc="claude --dangerously-skip-permissions"
+alias ccc="claude --dangerously-skip-permissions -c"
+alias ag="agy --dangerously-skip-permissions"
+
+# Chezmoi
+unalias dot 2>/dev/null
+dot() {
+  chezmoi "$@"
+  case "$1" in
+    apply|update)
+      source ~/.zshrc
+      echo "⚡ ~/.zshrc rechargé."
+      ;;
+  esac
+}
+
+alias dota="chezmoi add"
+alias dote="chezmoi edit"
+alias dotd="chezmoi diff"
+alias dots="chezmoi status"
+alias dotl="chezmoi managed"
+alias dotc="chezmoi cd"
+alias dotu="dot update"
+
+dotp() {
+  chezmoi git add -A
+  chezmoi git commit -m "${1:-chore: update dotfiles}"
+  chezmoi git push
+}
+
+alias cls="clear"
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+# Antigravity
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+export PATH="$BUN_INSTALL/bin:$HOME/.local/bin:$PATH"
+
+# Windsurf
+export PATH="$HOME/.codeium/windsurf/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+
+# Google Cloud SDK
+[ -d "/opt/homebrew/share/google-cloud-sdk/bin" ] && export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<

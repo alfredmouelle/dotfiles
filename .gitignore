@@ -1,0 +1,5 @@
+.DS_Store
+*dot_DS_Store
+*.backup*
+*AGENTS-*.md
+*.bak*

@@ -1,0 +1,13 @@
+tap "homebrew/bundle"
+
+# Core Developer Tools
+brew "fnm"
+brew "pnpm"
+brew "gh"
+brew "git-delta"
+brew "tmux"
+brew "biome"
+
+# Terminal & Fonts
+cask "font-geist-mono-nerd-font"
+cask "ghostty"

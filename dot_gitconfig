@@ -1,0 +1,35 @@
+[core]
+	excludesFile = ~/.gitignore
+	autocrlf = input
+	editor = vim
+	pager = delta
+
+[user]
+	name = Alfred MOUELLE
+	email = alfredmouelle@gmail.com
+
+[fetch]
+	prune = true
+
+[push]
+	default = current
+	autoSetupRemote = true
+
+[alias]
+	undo = reset --soft HEAD^
+
+[init]
+	defaultBranch = main
+
+[help]
+	autocorrect = 1
+
+[pull]
+	rebase = false
+
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+[merge]
+	conflictStyle = zdiff3

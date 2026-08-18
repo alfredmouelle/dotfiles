@@ -1,0 +1,75 @@
+#!/bin/bash
+set -euo pipefail
+
+echo "==> Running bootstrap script..."
+
+# Ensure Homebrew is in PATH for Apple Silicon / Intel
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -f "/usr/local/bin/brew" ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# .Brewfile hash: {{ include "dot_Brewfile" | sha256sum }}
+if command -v brew >/dev/null 2>&1; then
+    echo "==> Installing packages from Brewfile..."
+    brew bundle --global --no-lock
+fi
+
+# Install Node.js 24.19.0 via fnm
+if command -v fnm >/dev/null 2>&1; then
+    echo "==> Installing Node.js 24.19.0 with fnm..."
+    eval "$(fnm env --shell zsh)"
+    fnm install 24.19.0
+    fnm default 24.19.0
+fi
+
+# Install Bun if missing
+if ! command -v bun >/dev/null 2>&1; then
+    echo "==> Installing Bun..."
+    curl -fsSL https://bun.sh/install | bash
+fi
+
+# Create standard developer directories
+echo "==> Creating standard Developer directories..."
+mkdir -p "$HOME/Developer/clients" \
+         "$HOME/Developer/collab" \
+         "$HOME/Developer/demos" \
+         "$HOME/Developer/oss" \
+         "$HOME/Developer/perso"
+
+# Install Claude Code if missing
+if ! command -v claude >/dev/null 2>&1; then
+    echo "==> Installing Claude Code..."
+    curl -fsSL https://claude.ai/install.sh | bash
+fi
+
+# Install Antigravity CLI if missing
+if ! command -v agy >/dev/null 2>&1; then
+    echo "==> Installing Antigravity CLI..."
+    curl -fsSL https://antigravity.google/cli/install.sh | bash
+fi
+
+# Link AI agent configurations (Claude & Gemini) to single source (~/.agents)
+echo "==> Linking AI agent configurations..."
+mkdir -p "$HOME/.claude" "$HOME/.gemini"
+
+# Claude Code
+ln -sfn "$HOME/.agents/AGENTS.md" "$HOME/.claude/CLAUDE.md"
+ln -sfn "$HOME/.agents/docs"      "$HOME/.claude/docs"
+ln -sfn "$HOME/.agents/skills"    "$HOME/.claude/skills"
+ln -sfn "$HOME/.agents/agents"    "$HOME/.claude/agents"
+
+# Gemini / Antigravity
+ln -sfn "$HOME/.agents/AGENTS.md" "$HOME/.gemini/GEMINI.md"
+ln -sfn "$HOME/.agents/docs"      "$HOME/.gemini/docs"
+ln -sfn "$HOME/.agents/skills"    "$HOME/.gemini/skills"
+ln -sfn "$HOME/.agents/agents"    "$HOME/.gemini/agents"
+
+# Install Vim plugins
+if [ -f "$HOME/.vim/autoload/plug.vim" ]; then
+    echo "==> Installing Vim plugins..."
+    vim +PlugInstall +qall 2>/dev/null || true
+fi
+
+echo "==> Bootstrap completed successfully!"

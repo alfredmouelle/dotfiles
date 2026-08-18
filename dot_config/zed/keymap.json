@@ -1,0 +1,24 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-o": "file_finder::Toggle",
+      "alt-t": "terminal_panel::Toggle",
+
+      "alt-1": ["workspace::ActivatePane", 0],
+      "alt-2": ["workspace::ActivatePane", 1],
+      "alt-3": ["workspace::ActivatePane", 2],
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-d": "editor::DuplicateSelection",
+      "ctrl-m": "editor::MoveToEnclosingBracket",
+
+      "alt-z": "editor::ToggleSoftWrap",
+      "ctrl-shift-alt-l": "editor::Format",
+      "ctrl-bracketleft": "pane::TogglePinTab",
+    },
+  },
+]
