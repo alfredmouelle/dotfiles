@@ -1,56 +1,46 @@
 # Dotfiles
 
-Personal configuration and developer environment for macOS, managed declaratively with [chezmoi](https://www.chezmoi.io/).
+Personal macOS setup managed with [chezmoi](https://www.chezmoi.io/).
 
----
+## Stack
 
-## What is included
+- **Terminal & shell**: Ghostty (GeistMono Nerd Font), Zsh, and runtimes (`fnm`, `bun`, `pnpm`).
+- **Multiplexer**: Tmux with Catppuccin theme, TPM plugins, and a `dev` workspace launcher.
+- **Git & editors**: Delta diff pager, Vim (`.vimrc`), and Zed.
+- **AI agents**: Shared skills and configurations in `~/.agents/` symlinked for Claude Code and Antigravity.
 
-- **Shell**: Zsh (`.zshrc`) with concise aliases (`g`, `p`, `cc`, `ag`, `tk`, `tks`) and runtimes (`fnm`, `bun`, `pnpm`).
-- **Multiplexer & Workspaces**: Tmux (`.tmux.conf`) with Catppuccin theme, auto-bootstrapped TPM plugins (`resurrect`, `continuum`), and universal workspace launcher (`~/.local/bin/dev`).
-- **Terminal & Font**: Ghostty configuration (`~/.config/ghostty/config`) and `GeistMono Nerd Font Mono`.
-- **Git**: Global `.gitconfig` and `git-delta`.
-- **Editors**:
-  - **Vim**: Minimal `.vimrc` with Catppuccin Mocha theme and `vim-plug`.
-  - **Zed**: Custom `settings.json` and `keymap.json`.
-- **AI & Agents**: Antigravity / Claude Code skills, subagents, and guidelines (`~/.agents/`).
+## Install on a fresh Mac
 
----
-
-## Quick Start (New Machine)
-
-### 1. Install Homebrew & Chezmoi
 ```bash
+# Install Homebrew and chezmoi
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install chezmoi
-```
 
-### 2. Apply Dotfiles (Automatic Bootstrap)
-```bash
+# Apply dotfiles and run bootstrap
 chezmoi init --apply alfredmouelle
 ```
-*Automatically deploys configs, installs Homebrew packages (`Brewfile`), configures Node.js via `fnm`, installs `bun`, Claude Code, Antigravity CLI, creates `~/Developer` directories, installs Vim plugins, and auto-bootstraps Tmux TPM plugins on first launch.*
 
----
+The bootstrap script installs packages from `Brewfile`, sets up Node with `fnm`, installs Bun, links agent configs, and sets up `~/Developer`.
 
-## Daily Workflow
+## Daily commands
 
-### Dotfiles Management
+### Dotfiles
 
-| Action | Command | Description |
-| :--- | :--- | :--- |
-| **Track / Update file** | `dota ~/.filename` | Track or update file in chezmoi |
-| **Preview diff** | `dotd` | View diff against repository |
-| **Update from remote** | `dot update` | Pull remote changes and reload shell |
-| **Commit & push** | `dotp "message"` | Stage all changes, commit, and push |
+| Command | Action |
+| :--- | :--- |
+| `dota <path>` | Track or update file in chezmoi |
+| `dotd` | View diff against repository |
+| `dot update` | Pull remote changes and reload shell |
+| `dotp "message"` | Stage, commit, and push |
 
-### Workspace & Tmux
+### Tmux & workspaces
 
-| Action | Command / Shortcut | Description |
-| :--- | :--- | :--- |
-| **Open workspace** | `dev <project>` | Launch or attach 2-window session (`Agents` + `Server & Commands`) |
-| **Switch windows** | `Option + Tab` | Instant toggle between the 2 active windows |
-| **Switch panes** | `Ctrl + h / j / k / l` | Navigate left, down, up, right |
-| **Quick action menu** | `Ctrl-a Space` | Visual popup menu for splits, tabs, and sessions |
-| **Kill session** | `tk <project>` | Kill specific project session |
-| **Kill server** | `tks` | Kill entire tmux server |
+| Shortcut / Command | Action |
+| :--- | :--- |
+| `dev <project>` | Open or attach project session |
+| `Option + 1...9` | Jump directly to window 1 to 9 |
+| `Option + Tab` | Toggle last active window |
+| `Ctrl + h / j / k / l` | Focus pane (left, down, up, right) |
+| `Ctrl-a Space` | Action menu for splits, tabs, and sessions |
+| `tk <project>` | Kill project session |
+| `tks` | Kill entire tmux server |

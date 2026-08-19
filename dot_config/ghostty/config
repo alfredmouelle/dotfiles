@@ -1,4 +1,4 @@
-theme = dark:Catppuccin Mocha,light:Catppuccin Latte
+theme = Catppuccin Mocha
 font-family = GeistMono Nerd Font Mono
 font-size = 16
 font-style = Medium
@@ -8,6 +8,7 @@ font-synthetic-style = false
 macos-option-as-alt = true
 
 # Window
+window-theme = dark
 window-height = 35
 window-width = 150
 window-position-x = 180
@@ -34,3 +35,13 @@ clipboard-paste-bracketed-safe = true
 quick-terminal-size = 70%,70%
 quick-terminal-position = center
 auto-update-channel = stable
+
+keybind = alt+1=text:\x011
+keybind = alt+2=text:\x012
+keybind = alt+3=text:\x013
+keybind = alt+4=text:\x014
+keybind = alt+5=text:\x015
+keybind = alt+6=text:\x016
+keybind = alt+7=text:\x017
+keybind = alt+8=text:\x018
+keybind = alt+9=text:\x019

@@ -1,5 +1,3 @@
-tap "homebrew/bundle"
-
 # Core Developer Tools
 brew "fnm"
 brew "pnpm"
