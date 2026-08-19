@@ -5,4 +5,6 @@ CLAUDE.md
 .DS_Store
 .agents
 .claude
+.config/lazygit/state.yml
+.config/lazygit/*.json
 

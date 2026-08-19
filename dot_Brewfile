@@ -5,6 +5,7 @@ brew "fnm"
 brew "pnpm"
 brew "gh"
 brew "git-delta"
+brew "lazygit"
 brew "tmux"
 brew "biome"
 

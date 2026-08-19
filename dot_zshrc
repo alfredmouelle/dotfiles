@@ -5,6 +5,7 @@ alias zsrc="source ~/.zshrc"
 
 alias p=pnpm
 alias g=git
+alias lg='lazygit'
 alias ga='git add'
 alias gb='git branch'
 alias gbc='git checkout'

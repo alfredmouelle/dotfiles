@@ -23,11 +23,16 @@ SESSION_NAME=$(basename "$PROJECT_DIR" | tr '.' '_')
 if ! tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
   tmux new-session -d -s "$SESSION_NAME" -n "Agents" -c "$PROJECT_DIR"
 
-  tmux new-window -t "$SESSION_NAME:2" -n "Server & Commands" -c "$PROJECT_DIR"
-  if [ -f "$PROJECT_DIR/package.json" ]; then
-    tmux send-keys -t "$SESSION_NAME:2.1" "pnpm dev"
+  if git -C "$PROJECT_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1 || [ -d "$PROJECT_DIR/.git" ]; then
+    GIT_WIN=$(tmux new-window -P -F "#{window_id}" -t "$SESSION_NAME" -n "Git" -c "$PROJECT_DIR")
+    tmux send-keys -t "$GIT_WIN" "lazygit" C-m
   fi
-  tmux split-window -h -t "$SESSION_NAME:2" -c "$PROJECT_DIR"
+
+  CMD_WIN=$(tmux new-window -P -F "#{window_id}" -t "$SESSION_NAME" -n "Server & Commands" -c "$PROJECT_DIR")
+  if [ -f "$PROJECT_DIR/package.json" ]; then
+    tmux send-keys -t "$CMD_WIN.1" "pnpm dev"
+  fi
+  tmux split-window -h -t "$CMD_WIN" -c "$PROJECT_DIR"
 
   tmux select-window -t "$SESSION_NAME:1"
 fi
