@@ -1,0 +1,5 @@
+interface:
+  display_name: "Pick to Branch"
+  short_description: "Cherry-pick commits onto a target branch with current date"
+policy:
+  allow_implicit_invocation: false

@@ -3,8 +3,6 @@ AGENTS.md
 CLAUDE.md
 .gitignore
 .DS_Store
-.agents
-.claude
 .config/lazygit/state.yml
 .config/lazygit/*.json
 

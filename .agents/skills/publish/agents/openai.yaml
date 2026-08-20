@@ -1,0 +1,5 @@
+interface:
+  display_name: "Publish"
+  short_description: "Detect, audit, commit, and push dotfiles changes"
+policy:
+  allow_implicit_invocation: false
