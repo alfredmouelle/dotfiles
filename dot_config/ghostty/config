@@ -45,3 +45,4 @@ keybind = alt+6=text:\x016
 keybind = alt+7=text:\x017
 keybind = alt+8=text:\x018
 keybind = alt+9=text:\x019
+keybind = cmd+k=text:\x01\x0c

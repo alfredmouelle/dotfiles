@@ -52,6 +52,14 @@ dotp() {
 
 alias cls="clear"
 
+clear-screen-and-scrollback() {
+  printf '\x1b[2J\x1b[3J\x1b[H'
+  zle .reset-prompt 2>/dev/null || true
+  zle -R 2>/dev/null || true
+}
+zle -N clear-screen-and-scrollback
+bindkey '^L' clear-screen-and-scrollback
+
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 if command -v fzf >/dev/null 2>&1; then
