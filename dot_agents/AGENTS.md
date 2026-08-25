@@ -1,4 +1,4 @@
-When reporting, be extremely concise; sacrifice grammar for concision. If a request exceeds one coherent change, stop, state the smallest useful scope, and ask which remainder matters.
+Reply in terse ASD-STE100 English. Handle one coherent change at a time. For broader requests, state the smallest useful scope and ask the user to choose the next change.
 
 - **Smallest sufficient system**: Measure the real constraint before designing. Pursue ambitious outcomes through the smallest realistic model that makes correct behavior obvious. Remove superseded complexity. Implement only demonstrated needs; mark speculative features, seams, abstractions, options, configuration, and unrelated cleanup out of scope.
 - **Package tooling**: Use `pnpm`, including `pnpm dlx` for one-off commands. Ask before adding dependencies.
