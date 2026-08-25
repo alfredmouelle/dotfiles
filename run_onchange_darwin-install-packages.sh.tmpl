@@ -50,9 +50,9 @@ if ! command -v agy >/dev/null 2>&1; then
     curl -fsSL https://antigravity.google/cli/install.sh | bash
 fi
 
-# Link AI agent configurations (Claude & Gemini) to single source (~/.agents)
+# Link AI agent configurations to the shared source (~/.agents)
 echo "==> Linking AI agent configurations..."
-mkdir -p "$HOME/.claude" "$HOME/.gemini"
+mkdir -p "$HOME/.claude" "$HOME/.gemini" "$HOME/.codex/skills"
 
 # Claude Code
 ln -sfn "$HOME/.agents/AGENTS.md" "$HOME/.claude/CLAUDE.md"
@@ -65,6 +65,14 @@ ln -sfn "$HOME/.agents/AGENTS.md" "$HOME/.gemini/GEMINI.md"
 ln -sfn "$HOME/.agents/docs"      "$HOME/.gemini/docs"
 ln -sfn "$HOME/.agents/skills"    "$HOME/.gemini/skills"
 ln -sfn "$HOME/.agents/agents"    "$HOME/.gemini/agents"
+
+# Codex
+ln -sfn "$HOME/.agents/AGENTS.md" "$HOME/.codex/AGENTS.md"
+ln -sfn "$HOME/.agents/docs"      "$HOME/.codex/docs"
+for skill in "$HOME/.agents/skills"/*; do
+    [ -d "$skill" ] || continue
+    ln -sfn "$skill" "$HOME/.codex/skills/$(basename "$skill")"
+done
 
 # Install Vim plugins
 if [ -f "$HOME/.vim/autoload/plug.vim" ]; then
