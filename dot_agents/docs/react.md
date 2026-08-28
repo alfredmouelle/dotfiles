@@ -6,3 +6,5 @@ Write React that Theo Browne and Matt Pocock would be proud of: colocation-first
 - **Derived state**: Compute values on the fly during render or via pure helpers. Reserve `useEffect` for synchronization with external systems; compute state transitions directly in event handlers.
 - **Server boundaries**: Keep loaders and server data orchestration at the route boundary. In RSC frameworks (Next.js), push `'use client'` down to the interactive leaf nodes.
 - **Composition**: Favor composition (compound subcomponents, Radix primitives, children slots) over monolithic components driven by dozens of boolean switches.
+- **Interactive elements**: Always add the Tailwind `cursor-pointer` class to every interactive element.
+- **Responsive design**: Use a mobile-first approach. Define base styles for small screens, then add breakpoint overrides for larger screens.

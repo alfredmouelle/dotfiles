@@ -67,8 +67,7 @@ ln -sfn "$HOME/.agents/skills"    "$HOME/.gemini/skills"
 ln -sfn "$HOME/.agents/agents"    "$HOME/.gemini/agents"
 
 # Codex
-ln -sfn "$HOME/.agents/AGENTS.md" "$HOME/.codex/AGENTS.md"
-ln -sfn "$HOME/.agents/docs"      "$HOME/.codex/docs"
+#ln -sfn "$HOME/.agents/AGENTS.md" "$HOME/.codex/AGENTS.md"
 for skill in "$HOME/.agents/skills"/*; do
     [ -d "$skill" ] || continue
     ln -sfn "$skill" "$HOME/.codex/skills/$(basename "$skill")"

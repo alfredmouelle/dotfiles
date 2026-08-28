@@ -8,5 +8,5 @@ Reply in terse ASD-STE100 English. Handle one coherent change at a time. For bro
 - **Attribution**: Keep commits and artifacts free of AI attribution, including `Co-Authored-By` and generator notices.
 - **Comments**: Limit new comments to linter directives, license headers, and shebangs. Preserve existing comments.
 - **Delegation**: Give each task one owner. When a subagent owns it, wait for and reuse its result.
-- **TypeScript**: When writing, reviewing, or editing TypeScript, read and apply [the TypeScript conventions](docs/typescript.md).
-- **React**: When writing, reviewing, or editing React components, read and apply [the React conventions](docs/react.md).
+- **TypeScript**: When writing, reviewing, or editing TypeScript, read and apply `~/.agents/docs/typescript.md`.
+- **React**: When writing, reviewing, or editing React components, read and apply `~/.agents/docs/react.md`.
