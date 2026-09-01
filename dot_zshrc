@@ -1,6 +1,6 @@
 eval "$(fnm env --use-on-cd --shell zsh)"
 
-alias zcfg="vim ~/.zshrc"
+alias zcfg="chezmoi edit ~/.zshrc"
 alias zsrc="source ~/.zshrc"
 
 alias p=pnpm
@@ -16,9 +16,8 @@ alias gf='git fetch --prune'
 alias gl='git pull'
 alias gm='git merge'
 alias gp='git push'
-alias gpl='git pull'
 alias gr='git remote'
-alias brewup='brew update & brew upgrade'
+alias brewup='brew update && brew upgrade'
 
 # Claude & Antigravity
 alias cc="claude --dangerously-skip-permissions"
@@ -79,9 +78,6 @@ if command -v fzf >/dev/null 2>&1; then
     export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always --line-range :300 {}' --preview-window right:50%:wrap"
   fi
 fi
-
-# Antigravity
-export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
