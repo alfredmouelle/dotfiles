@@ -23,7 +23,6 @@ alias brewup='brew update & brew upgrade'
 # Claude & Antigravity
 alias cc="claude --dangerously-skip-permissions"
 alias ccc="claude --dangerously-skip-permissions -c"
-alias ag="agy --dangerously-skip-permissions"
 
 # Tmux
 alias tk="tmux kill-session -t"
