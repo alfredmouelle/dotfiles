@@ -28,7 +28,7 @@
 	rebase = false
 
 [interactive]
-	diffFilter = delta --color-only
+	diffFilter = delta-system --color-only
 [delta]
 	navigate = true
 [merge]

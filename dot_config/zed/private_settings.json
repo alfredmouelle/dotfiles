@@ -1,4 +1,7 @@
 {
+  "markdown_preview_font_family": "Geist",
+  "ui_font_family": "Geist",
+  "diff_view_style": "unified",
   "cli_default_open_behavior": "new_window",
   "base_keymap": "VSCode",
   "icon_theme": "Symbols Icon Theme",

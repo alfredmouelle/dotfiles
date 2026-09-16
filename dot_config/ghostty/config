@@ -1,4 +1,4 @@
-theme = Catppuccin Mocha
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
 font-family = GeistMono Nerd Font Mono
 font-size = 16
 font-style = Medium
@@ -8,7 +8,7 @@ font-synthetic-style = false
 macos-option-as-alt = true
 
 # Window
-window-theme = dark
+window-theme = auto
 window-height = 35
 window-width = 150
 window-position-x = 180

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+case "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" in
+  *Dark*) exec delta --dark "$@" ;;
+  *) exec delta --light "$@" ;;
+esac

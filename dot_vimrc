@@ -26,9 +26,14 @@ Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 call plug#end()
 
 " Theme
-try
+let s:catppuccin_flavor = 'mocha'
+if has('macunix') && system('defaults read -g AppleInterfaceStyle 2>/dev/null') !~# 'Dark'
+let s:catppuccin_flavor = 'latte'
+endif
 
-colorscheme catppuccin_mocha
+try
+execute 'colorscheme catppuccin_' . s:catppuccin_flavor
+let g:lightline = {'colorscheme': 'catppuccin_' . s:catppuccin_flavor}
 
 catch /^Vim\%((\a\+)\)\=:E185/
 
@@ -36,7 +41,7 @@ catch /^Vim\%((\a\+)\)\=:E185/
 
 endtry
 
-let g:lightline = {'colorscheme': 'catppuccin_mocha'}
+let g:lightline = {'colorscheme': 'catppuccin_' . s:catppuccin_flavor}
 
 " Wildmenu
 set wildmode=list:full
