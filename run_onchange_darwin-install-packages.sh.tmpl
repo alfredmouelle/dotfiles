@@ -13,11 +13,9 @@ ensure_symlink() {
     if [[ -L "$target_path" ]]; then
         unlink "$target_path"
     elif [[ -e "$target_path" ]]; then
-        if [[ ! -d "$target_path" ]] || [[ -n "$(find "$target_path" -mindepth 1 -maxdepth 1 -print -quit)" ]]; then
-            echo "==> Cannot replace non-empty path: $target_path" >&2
-            return 1
-        fi
-        rmdir "$target_path"
+        local backup_path="${target_path}.backup.$(date +%Y%m%d%H%M%S).$$"
+        mv "$target_path" "$backup_path"
+        echo "==> Moved existing path to $backup_path"
     fi
 
     ln -s "$source_path" "$target_path"

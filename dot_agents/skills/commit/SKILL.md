@@ -47,11 +47,14 @@ Repository commit rules override this fallback. Otherwise use
   the whole subject.
 - Use a lowercase, single-concern scope such as `auth`, `ui`, `api`, or `db`.
 - Mark a breaking change with `!` and a `BREAKING CHANGE: <impact>` footer.
-- Add a body only when the reason is not evident from the diff.
+- Write the subject alone. A body is earned by one fact the diff cannot show:
+  a decision taken, a constraint obeyed, or a breaking impact. Name that fact in
+  at most two lines, or ship the subject alone.
 - Split independent concerns when they can be separated without ambiguous hunks.
 
 **Done when:** every staged hunk belongs to exactly one planned commit and each
-commit has its final subject, optional body, and optional breaking footer.
+commit has its final subject, a breaking footer where one applies, and a body
+only where a named off-diff fact earned it.
 
 ## 5. Commit and verify
 
