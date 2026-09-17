@@ -1,7 +1,6 @@
 ---
 name: websearch
 description: Use this agent when you need to make a quick web search.
-color: yellow
 tools: WebSearch, WebFetch
 ---
 

@@ -1,6 +1,28 @@
 #!/bin/bash
 set -euo pipefail
 
+ensure_symlink() {
+    local source_path="$1"
+    local target_path="$2"
+
+    if [[ ! -e "$source_path" && ! -L "$source_path" ]]; then
+        echo "==> Missing link source: $source_path" >&2
+        return 1
+    fi
+
+    if [[ -L "$target_path" ]]; then
+        unlink "$target_path"
+    elif [[ -e "$target_path" ]]; then
+        if [[ ! -d "$target_path" ]] || [[ -n "$(find "$target_path" -mindepth 1 -maxdepth 1 -print -quit)" ]]; then
+            echo "==> Cannot replace non-empty path: $target_path" >&2
+            return 1
+        fi
+        rmdir "$target_path"
+    fi
+
+    ln -s "$source_path" "$target_path"
+}
+
 echo "==> Running bootstrap script..."
 
 # Ensure Homebrew is in PATH for Apple Silicon / Intel
@@ -55,22 +77,22 @@ echo "==> Linking AI agent configurations..."
 mkdir -p "$HOME/.claude" "$HOME/.gemini" "$HOME/.codex/skills"
 
 # Claude Code
-ln -sfn "$HOME/.agents/AGENTS.md" "$HOME/.claude/CLAUDE.md"
-ln -sfn "$HOME/.agents/docs"      "$HOME/.claude/docs"
-ln -sfn "$HOME/.agents/skills"    "$HOME/.claude/skills"
-ln -sfn "$HOME/.agents/agents"    "$HOME/.claude/agents"
+ensure_symlink "$HOME/.agents/AGENTS.md" "$HOME/.claude/CLAUDE.md"
+ensure_symlink "$HOME/.agents/docs"      "$HOME/.claude/docs"
+ensure_symlink "$HOME/.agents/skills"    "$HOME/.claude/skills"
+ensure_symlink "$HOME/.agents/agents"    "$HOME/.claude/agents"
 
 # Gemini / Antigravity
-ln -sfn "$HOME/.agents/AGENTS.md" "$HOME/.gemini/GEMINI.md"
-ln -sfn "$HOME/.agents/docs"      "$HOME/.gemini/docs"
-ln -sfn "$HOME/.agents/skills"    "$HOME/.gemini/skills"
-ln -sfn "$HOME/.agents/agents"    "$HOME/.gemini/agents"
+ensure_symlink "$HOME/.agents/AGENTS.md" "$HOME/.gemini/GEMINI.md"
+ensure_symlink "$HOME/.agents/docs"      "$HOME/.gemini/docs"
+ensure_symlink "$HOME/.agents/skills"    "$HOME/.gemini/skills"
+ensure_symlink "$HOME/.agents/agents"    "$HOME/.gemini/agents"
 
 # Codex
-ln -sfn "$HOME/.agents/AGENTS.md" "$HOME/.codex/AGENTS.md"
+ensure_symlink "$HOME/.agents/AGENTS.md" "$HOME/.codex/AGENTS.md"
 for skill in "$HOME/.agents/skills"/*; do
     [ -d "$skill" ] || continue
-    ln -sfn "$skill" "$HOME/.codex/skills/$(basename "$skill")"
+    ensure_symlink "$skill" "$HOME/.codex/skills/$(basename "$skill")"
 done
 
 # Install Vim plugins
