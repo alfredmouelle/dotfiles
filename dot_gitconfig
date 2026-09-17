@@ -7,6 +7,7 @@
 [user]
 	name = Alfred MOUELLE
 	email = alfredmouelle@gmail.com
+	useConfigOnly = true
 
 [fetch]
 	prune = true
@@ -25,11 +26,31 @@
 	autocorrect = 1
 
 [pull]
-	rebase = false
+	rebase = true
+
+[rebase]
+	autoStash = true
+
+[rerere]
+	enabled = true
+
+[branch]
+	sort = -committerdate
+
+[tag]
+	sort = version:refname
+
+[diff]
+	algorithm = histogram
+
+[commit]
+	verbose = true
 
 [interactive]
 	diffFilter = delta-system --color-only
+
 [delta]
 	navigate = true
+
 [merge]
 	conflictStyle = zdiff3
