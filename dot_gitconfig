@@ -17,6 +17,11 @@
 	autoSetupRemote = true
 
 [alias]
+	st = status --short --branch
+	graph = log --graph --oneline --decorate --all
+	last = log -1 HEAD --stat
+	unstage = restore --staged
+	branches = branch -vv
 	undo = reset --soft HEAD^
 
 [init]
