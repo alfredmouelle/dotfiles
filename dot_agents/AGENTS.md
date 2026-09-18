@@ -10,3 +10,4 @@ Reply in terse ASD-STE100 English. Handle one coherent change at a time. For bro
 - **Delegation**: Give each task one owner. When a subagent owns it, wait for and reuse its result.
 - **TypeScript**: When writing, reviewing, or editing TypeScript, read and apply `~/.agents/docs/typescript.md`.
 - **React**: When writing, reviewing, or editing React components, read and apply `~/.agents/docs/react.md`.
+- **Test data**: Use neutral, realistic, domain-appropriate values for every test field and text. Use reserved domains such as `example.com` for test emails. Keep names, labels, descriptions, notes, metadata, and user-facing text free of references to the agent, model, tool, vendor, or automation workflow.
