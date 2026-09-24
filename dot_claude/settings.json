@@ -2,7 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
     "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
-    "OTEL_METRICS_EXPORTER": "none"
+    "OTEL_METRICS_EXPORTER": "none",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
   },
   "attribution": {
     "commit": "",
@@ -24,7 +25,7 @@
     ],
     "defaultMode": "bypassPermissions"
   },
-  "model": "opus[1m]",
+  "model": "opus",
   "fallbackModel": [
     "sonnet",
     "default"
