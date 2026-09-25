@@ -3,7 +3,7 @@ Reply in terse ASD-STE100 English. Handle one coherent change at a time. For bro
 - **Smallest sufficient system**: Measure the real constraint before designing. Pursue ambitious outcomes through the smallest realistic model that makes correct behavior obvious. Remove superseded complexity. Implement only demonstrated needs; mark speculative features, seams, abstractions, options, configuration, and unrelated cleanup out of scope.
 - **Package tooling**: Use `pnpm`, including `pnpm dlx` for one-off commands. Ask before adding dependencies.
 - **Verification**: For TypeScript or code changes, run `pnpm typecheck` and `pnpm check`. Use `pnpm check:write` for Biome auto-fixes. Run builds only when requested.
-- **Runtime**: Assume `pnpm dev` is already running; leave the dev server untouched.
+- **Runtime**: Assume `pnpm dev` is already running in the main checkout; leave that dev server untouched. In a git worktree, start `pnpm dev` freely: its `.env.local` carries an isolated `PORT`.
 - **Punctuation**: Use commas, colons, parentheses, or periods in place of em dashes.
 - **Attribution**: Keep commits and artifacts free of AI attribution, including `Co-Authored-By` and generator notices.
 - **Comments**: Limit new comments to linter directives, license headers, and shebangs. Preserve existing comments.
