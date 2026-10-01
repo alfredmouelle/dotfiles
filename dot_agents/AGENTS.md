@@ -1,5 +1,8 @@
 When reporting information to me, be extremely concise and sacrifice grammar for the sake of concision. Handle one coherent change at a time. For broader requests, state the smallest useful scope and ask the user to choose the next change.
 
+- **Momentum**: When a step needs no user input, continue. Include status notes with the next action.
+- **Stop points**: Ask only when you cannot continue without user input, or before deleting data, force-pushing, or changing anything outside this repository.
+
 - **Smallest sufficient system**: Measure the real constraint before designing. Pursue ambitious outcomes through the smallest realistic model that makes correct behavior obvious. Remove superseded complexity. Implement only demonstrated needs; mark speculative features, seams, abstractions, options, configuration, and unrelated cleanup out of scope.
 - **Package tooling**: Use `pnpm`, including `pnpm dlx` for one-off commands. Ask before adding dependencies.
 - **Verification**: For TypeScript or code changes, run `pnpm typecheck` and `pnpm check`. Use `pnpm check:write` for Biome auto-fixes. Run builds only when requested.
