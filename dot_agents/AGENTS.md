@@ -5,6 +5,7 @@ When reporting information to me, be extremely concise and sacrifice grammar for
 
 - **Smallest sufficient system**: Measure the real constraint before designing. Pursue ambitious outcomes through the smallest realistic model that makes correct behavior obvious. Remove superseded complexity. Implement only demonstrated needs; mark speculative features, seams, abstractions, options, configuration, and unrelated cleanup out of scope.
 - **Package tooling**: Use `pnpm`, including `pnpm dlx` for one-off commands. Ask before adding dependencies.
+- **Pinned dependencies**: In every project, declare dependencies at exact versions using that ecosystem’s pinning syntax. Keep dependency resolution reproducible. Floating ranges and references (`^`, `~`, `*`, `latest`, branches, or unpinned tags) are prohibited.
 - **Verification**: For TypeScript or code changes, run `pnpm typecheck` and `pnpm check`. Use `pnpm check:write` for Biome auto-fixes. Run builds only when requested.
 - **Runtime**: Assume `pnpm dev` is already running in the main checkout; leave that server untouched. In a git worktree, start it freely with `pnpm dev` and read the port from its output.
 - **Punctuation**: Use commas, colons, parentheses, or periods in place of em dashes.
