@@ -13,6 +13,7 @@ When reporting information to me, be extremely concise and sacrifice grammar for
 - **Attribution**: Keep commits and artifacts free of AI attribution, including `Co-Authored-By` and generator notices.
 - **Comments**: Limit new comments to linter directives, license headers, and shebangs. Preserve existing comments.
 - **Delegation**: Give each task one owner. When a subagent owns it, wait for and reuse its result.
+- **Code language**: Write all code in English: identifiers, constants, enum values and states, URL paths, database tables and columns, file names, commit messages, and PR titles. Other languages appear only in translated UI strings. Translate domain terms through the project's glossary when it has one, never ad hoc.
 - **TypeScript**: When writing, reviewing, or editing TypeScript, read and apply `~/.agents/docs/typescript.md`.
 - **React**: When writing, reviewing, or editing React components, read and apply `~/.agents/docs/react.md`.
 - **Test data**: Use neutral, realistic, domain-appropriate values for every test field and text. Use reserved domains such as `example.com` for test emails. Keep names, labels, descriptions, notes, metadata, and user-facing text free of references to the agent, model, tool, vendor, or automation workflow.
