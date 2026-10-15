@@ -1,0 +1,6 @@
+//registry.npmjs.org/:_authToken=${NPM_TOKEN}
+save-exact=true
+{{- $local := joinPath .chezmoi.homeDir ".npmrc.local" }}
+{{- if stat $local }}
+{{ include $local }}
+{{- end }}

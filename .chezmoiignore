@@ -2,7 +2,7 @@ README.md
 AGENTS.md
 CLAUDE.md
 .gitignore
-.DS_Store
+**/.DS_Store
 .config/lazygit/state.yml
 .config/lazygit/*.json
 
