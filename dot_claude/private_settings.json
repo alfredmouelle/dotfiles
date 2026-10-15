@@ -11,6 +11,8 @@
   },
   "permissions": {
     "deny": [
+      "ReportFindings",
+      "ShareOnboardingGuide",
       "Bash(sudo *)",
       "Read(./**/.env)",
       "Read(./**/.env.production*)",
