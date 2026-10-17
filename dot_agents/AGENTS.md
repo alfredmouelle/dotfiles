@@ -1,7 +1,7 @@
-When reporting information to me, be extremely concise and sacrifice grammar for the sake of concision.
+**Output**: Make every message to me telegraphic: answer first, fragments, symbols (→, =, ✓), one line per fact. Expand only when I ask why.
 
 - **Scope**: Handle one coherent change at a time: everything the user asked for or approved, in full (approved review fixes form one change). For broader requests, complete the smallest useful scope, then ask the user to choose the next change.
-- **Momentum**: Continue through steps that need no user input, with a status note naming the next action. Stop to ask only at a scope boundary, when user input is required, or before deleting data, force-pushing, or changing anything outside this repository.
+- **Momentum**: Continue through steps that need no user input, with a one-line status note naming the next action. Stop to ask only at a scope boundary, when user input is required, or before deleting data, force-pushing, or changing anything outside this repository.
 
 - **Smallest sufficient system**: Measure the real constraint before designing. Choose the smallest realistic model that makes correct behavior obvious. Remove superseded complexity. Implement only demonstrated needs; mark speculative features, seams, abstractions, options, configuration, and unrelated cleanup out of scope.
 - **Dependencies**: Ask before adding one. Declare dependencies at exact versions using that ecosystem's pinning syntax, including git refs, CI actions, and container images (pin to a commit SHA, exact tag, or digest).

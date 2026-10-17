@@ -17,11 +17,11 @@ Undo what `~/.agents/docs/worktree.md` set up for a worktree, once the work has 
 Resolve the worktree path, its branch, and the main checkout (`git worktree list`). Read the branch's PR state from the forge hosting `origin` (`git remote get-url origin`): use that forge's CLI when installed (`gh` for GitHub, `tea` for Gitea, `glab` for GitLab, where a PR is a merge request), else its API, else ask the user. Then list each footprint item with its evidence:
 
 - **Databases**: every database named in the worktree's untracked overrides (`.env.local`, `.env.test.local`, any file marked `git update-index --skip-worktree`) that differs from the main checkout's own env files, plus any container created for one of them.
-- **Processes**: every process whose working directory is inside the worktree (`lsof -d cwd`, filtered on its path): dev servers, bundlers, watchers, plus any preview server this session started. Shared tools such as emulators and simulators stay out.
+- **Processes**: every process whose working directory is inside the worktree (`lsof -d cwd`, filtered on its path): dev servers, bundlers, watchers, plus any preview server this session started. Shared tools such as emulators and simulators, and this session's own process, stay out.
 - **Overrides**: the untracked files the setup layered on top of the copied config (`.env.local`, `.env.test.local`, launch entries). The copied config itself (`.env` and the like) stays with the worktree.
 - **Branches**: the remote branch (`git ls-remote --heads origin <branch>`) and, with `all`, the local one.
 
-An item counts only when its evidence ties it to this worktree. Anything shared with the main checkout, or ambiguous, goes in the report as kept.
+An item counts only when its evidence ties it to this worktree. Shared items belong to the main checkout, outside the footprint; an ambiguous item is kept and reported with its reason.
 
 **Done when:** every footprint item is listed with its evidence, and the PR state is known.
 
@@ -59,4 +59,4 @@ When this session runs inside the worktree, leave it first through the host's wo
 
 ## 7. Report
 
-One line per footprint item: removed, already gone, or kept with the reason.
+Report what this run changed: the PR state, one line listing what it removed, one line per ambiguous item kept with its reason. Without `all`, one more line names `/worktree-cleanup all` for the worktree and local branch.
