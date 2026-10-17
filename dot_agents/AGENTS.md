@@ -4,10 +4,9 @@ When reporting information to me, be extremely concise and sacrifice grammar for
 - **Momentum**: Continue through steps that need no user input, with a status note naming the next action. Stop to ask only at a scope boundary, when user input is required, or before deleting data, force-pushing, or changing anything outside this repository.
 
 - **Smallest sufficient system**: Measure the real constraint before designing. Choose the smallest realistic model that makes correct behavior obvious. Remove superseded complexity. Implement only demonstrated needs; mark speculative features, seams, abstractions, options, configuration, and unrelated cleanup out of scope.
-- **Package tooling**: Use `pnpm`, including `pnpm dlx` for one-off commands. Ask before adding dependencies.
-- **Pinned dependencies**: Declare dependencies at exact versions using that ecosystem's pinning syntax, including git refs, CI actions, and container images (pin to a commit SHA, exact tag, or digest).
-- **Verification**: For TypeScript or code changes, run `pnpm typecheck` and `pnpm check`. Use `pnpm check:write` for Biome auto-fixes. Run builds only when requested.
-- **Runtime**: Assume `pnpm dev` is already running in the main checkout; leave that server untouched.
+- **Dependencies**: Ask before adding one. Declare dependencies at exact versions using that ecosystem's pinning syntax, including git refs, CI actions, and container images (pin to a commit SHA, exact tag, or digest).
+- **Builds**: Run builds only when requested.
+- **JS/TS projects**: In a project with a `package.json`, read and apply `~/.agents/docs/javascript.md`.
 - **Worktrees**: When working in a git worktree, read and apply `~/.agents/docs/worktree.md`.
 - **Punctuation**: Use commas, colons, parentheses, or periods in place of em dashes.
 - **Attribution**: Credit commits and artifacts to the user alone, with no `Co-Authored-By` trailer or generator notice.

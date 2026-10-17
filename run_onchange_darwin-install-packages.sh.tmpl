@@ -87,6 +87,12 @@ ensure_symlink "$HOME/.agents/skills"    "$HOME/.gemini/skills"
 
 # Codex
 ensure_symlink "$HOME/.agents/AGENTS.md" "$HOME/.codex/AGENTS.md"
+# Skills list hash: {{ glob (joinPath .chezmoi.sourceDir "dot_agents/skills/*") | join " " | sha256sum }}
+for link in "$HOME/.codex/skills"/*; do
+    if [[ -L "$link" && ! -e "$link" && "$(readlink "$link")" == "$HOME/.agents/skills/"* ]]; then
+        unlink "$link"
+    fi
+done
 for skill in "$HOME/.agents/skills"/*; do
     [ -d "$skill" ] || continue
     ensure_symlink "$skill" "$HOME/.codex/skills/$(basename "$skill")"

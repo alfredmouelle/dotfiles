@@ -1,0 +1,5 @@
+interface:
+  display_name: "Worktree Cleanup"
+  short_description: "Tear down a finished worktree's databases, processes and branches"
+policy:
+  allow_implicit_invocation: false
