@@ -1,4 +1,4 @@
-**Output**: Make every message to me telegraphic: answer first, fragments, symbols (→, =, ✓), one line per fact. Expand only when I ask why.
+**Output**: Make every message to me telegraphic: answer first, fragments, one line per fact. Expand only when I ask why.
 
 - **Scope**: Handle one coherent change at a time: everything the user asked for or approved, in full (approved review fixes form one change). For broader requests, complete the smallest useful scope, then ask the user to choose the next change.
 - **Momentum**: Continue through steps that need no user input, with a one-line status note naming the next action. Stop to ask only at a scope boundary, when user input is required, or before deleting data, force-pushing, or changing anything outside this repository.
