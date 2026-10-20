@@ -1,6 +1,5 @@
 # Core Developer Tools
 brew "fnm"
-brew "pnpm"
 brew "gh"
 brew "git-delta"
 brew "lazygit"
@@ -9,7 +8,6 @@ brew "ripgrep"
 brew "fd"
 brew "bat"
 brew "tmux"
-brew "biome"
 
 # Terminal & Fonts
 cask "font-geist-mono-nerd-font"

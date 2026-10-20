@@ -65,25 +65,14 @@ if ! command -v claude >/dev/null 2>&1; then
     curl -fsSL https://claude.ai/install.sh | bash
 fi
 
-# Install Antigravity CLI if missing
-if ! command -v agy >/dev/null 2>&1; then
-    echo "==> Installing Antigravity CLI..."
-    curl -fsSL https://antigravity.google/cli/install.sh | bash
-fi
-
 # Link AI agent configurations to the shared source (~/.agents)
 echo "==> Linking AI agent configurations..."
-mkdir -p "$HOME/.claude" "$HOME/.gemini" "$HOME/.codex/skills"
+mkdir -p "$HOME/.claude" "$HOME/.codex/skills"
 
 # Claude Code
 ensure_symlink "$HOME/.agents/AGENTS.md" "$HOME/.claude/CLAUDE.md"
 ensure_symlink "$HOME/.agents/docs"      "$HOME/.claude/docs"
 ensure_symlink "$HOME/.agents/skills"    "$HOME/.claude/skills"
-
-# Gemini / Antigravity
-ensure_symlink "$HOME/.agents/AGENTS.md" "$HOME/.gemini/GEMINI.md"
-ensure_symlink "$HOME/.agents/docs"      "$HOME/.gemini/docs"
-ensure_symlink "$HOME/.agents/skills"    "$HOME/.gemini/skills"
 
 # Codex
 ensure_symlink "$HOME/.agents/AGENTS.md" "$HOME/.codex/AGENTS.md"

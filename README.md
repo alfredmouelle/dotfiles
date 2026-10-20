@@ -4,10 +4,10 @@ Personal macOS setup managed with [chezmoi](https://www.chezmoi.io/).
 
 ## Stack
 
-- **Terminal & shell**: Ghostty (GeistMono Nerd Font), Zsh, and runtimes (`fnm`, `bun`, `pnpm`).
+- **Terminal & shell**: Ghostty (GeistMono Nerd Font), Zsh, and runtimes (`fnm`, `bun`, `pnpm` via corepack).
 - **Multiplexer**: Tmux with Catppuccin theme, TPM plugins, and a `dev` workspace launcher.
 - **Git & editors**: Delta diff pager, Vim (`.vimrc`), and Zed.
-- **AI agents**: Shared skills and configurations in `~/.agents/` symlinked for Claude Code, Antigravity, and Codex.
+- **AI agents**: Shared skills and configurations in `~/.agents/` symlinked for Claude Code and Codex.
 
 ## Install on a fresh Mac
 

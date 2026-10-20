@@ -19,7 +19,7 @@ alias gp='git push'
 alias gr='git remote'
 alias brewup='brew update && brew upgrade'
 
-# Claude & Antigravity
+# Claude
 alias cc="claude --dangerously-skip-permissions"
 alias ccc="claude --dangerously-skip-permissions -c"
 
