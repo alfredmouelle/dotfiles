@@ -1,0 +1,15 @@
+prefix_rule(
+    pattern=["git", "push", ["--force", "-f", "--force-with-lease"]],
+    decision="prompt",
+    justification="Force push rewrites remote history",
+    match=["git push --force origin main", "git push -f", "git push --force-with-lease"],
+    not_match=["git push origin main"],
+)
+
+prefix_rule(
+    pattern=["rm", ["-rf", "-fr"]],
+    decision="prompt",
+    justification="Recursive forced deletion",
+    match=["rm -rf dist", "rm -fr dist"],
+    not_match=["rm file.txt"],
+)

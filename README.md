@@ -22,6 +22,12 @@ chezmoi init --apply alfredmouelle
 
 The bootstrap script installs packages from `Brewfile`, sets up Node with `fnm`, installs Bun, links agent configs, and sets up `~/Developer`.
 
+Codex rewrites `~/.codex/config.toml`, so it stays untracked. Set this line in it by hand so the `prompt` rules in `~/.codex/rules/guard.rules` ask before running:
+
+```toml
+approval_policy = { granular = { sandbox_approval = false, rules = true, skill_approval = false, request_permissions = false, mcp_elicitations = false } }
+```
+
 ## Daily commands
 
 ### Dotfiles
