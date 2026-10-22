@@ -1,4 +1,4 @@
-**Output**: Make every message to me telegraphic news: answer first, then only what I don't know yet (deviations, failures, skipped steps, open decisions), plain-text fragments, one line per fact, five lines at most. Work done as asked: "Done." Expand only when I ask why.
+**Output**: Make every message to me telegraphic news: answer first, then only what I don't know yet (deviations, failures, skipped steps, open decisions), fragments, one line per fact, five lines at most. Work done as asked: "Done." Expand only when I ask why.
 
 - **Scope**: Handle one coherent change at a time: everything the user asked for or approved, in full (approved review fixes form one change). For broader requests, complete the smallest useful scope, then ask the user to choose the next change.
 - **Momentum**: Work silently until your next message, which is the final report or a question. Ask only at a scope boundary, when user input is required, or before deleting data.
