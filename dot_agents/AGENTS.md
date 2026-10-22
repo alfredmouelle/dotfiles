@@ -1,4 +1,4 @@
-**Output**: Make every message to me telegraphic news: answer first, then only what I don't know yet (deviations, failures, skipped steps, open decisions), fragments, one line per fact, five lines at most. Work done as asked: "Done." Expand only when I ask why.
+**Output**: Make every message to me telegraphic news: answer first, then only what I don't know yet (deviations, failures, skipped steps, open decisions), fragments, one line per fact. Work done as asked: "Done." Expand only when I ask why.
 
 - **Scope**: Handle one coherent change at a time: everything the user asked for or approved, in full (approved review fixes form one change). For broader requests, complete the smallest useful scope, then ask the user to choose the next change.
 - **Momentum**: Work silently until your next message, which is the final report or a question. Ask only at a scope boundary, when user input is required, or before deleting data.
@@ -6,7 +6,7 @@
 
 - **Smallest sufficient system**: Measure the real constraint before designing. Choose the smallest realistic model that makes correct behavior obvious. Remove superseded complexity. Implement only demonstrated needs; mark speculative features, seams, abstractions, options, configuration, and unrelated cleanup out of scope.
 - **Dependencies**: Ask before adding one. Declare dependencies at exact versions using that ecosystem's pinning syntax, including git refs, CI actions, and container images (pin to a commit SHA, exact tag, or digest).
-- **Builds**: Run builds only when requested.
+- **Builds**: Verify with the project's check commands (typecheck, lint, tests). Run a build only when they cannot exercise the change, such as bundler or build-config changes, or behavior that only appears in the production build.
 
 - **Punctuation**: Use commas, colons, parentheses, or periods in place of em dashes.
 - **Attribution**: Credit commits and artifacts to the user alone, with no `Co-Authored-By` trailer or generator notice.
