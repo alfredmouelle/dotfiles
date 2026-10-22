@@ -61,7 +61,6 @@ only where a named off-diff fact earned it.
 Create each planned commit without another confirmation. Use one `-m` for the
 subject and additional `-m` arguments only for content that exists. After each
 commit, inspect `git show --stat --oneline HEAD`; after the last, inspect
-`git status --short` and report every commit hash and subject.
+`git status --short`.
 
-**Done when:** every planned hunk is committed exactly once, the remaining
-worktree state is understood, and the user has each hash and subject.
+**Done when:** every planned hunk is committed exactly once and the remaining worktree state is understood.
