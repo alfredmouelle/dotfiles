@@ -6,15 +6,15 @@ disable-model-invocation: true
 
 # Worktree cleanup
 
-Undo what `~/.agents/docs/worktree.md` set up for a worktree, once the work has landed. The **footprint** is everything this worktree owns: its databases and their containers, the processes it runs, its untracked overrides, its branches. The main checkout, its processes and its databases sit outside the footprint and stay untouched.
+Undo what `~/.agents/docs/worktree.md` set up for a worktree, once the work has landed. The **footprint** is everything this worktree owns: its databases and their containers, the processes it runs, its untracked overrides, its branches.
 
 ## Arguments
 
-`all` also removes the worktree and its local branch. Without it, the run skips step 6.
+`all` also removes the worktree and its local branch. Without it, the run skips step 7.
 
 ## 1. Map the footprint
 
-Resolve the worktree path, its branch, and the main checkout (`git worktree list`). Read the branch's PR state from the forge hosting `origin` (`git remote get-url origin`): use that forge's CLI when installed (`gh` for GitHub, `tea` for Gitea, `glab` for GitLab, where a PR is a merge request), else its API, else ask the user. Then list each footprint item with its evidence:
+Resolve the worktree path, its branch, and the main checkout (`git worktree list`). Read the branch's PR state from `origin`'s forge, with its CLI, else ask. Then list each footprint item with its evidence:
 
 - **Databases**: every database named in the worktree's untracked overrides (`.env.local`, `.env.test.local`, any file marked `git update-index --skip-worktree`) that differs from the main checkout's own env files, plus any container created for one of them.
 - **Processes**: every process whose working directory is inside the worktree (`lsof -d cwd`, filtered on its path): dev servers, bundlers, watchers, plus any preview server this session started. Shared tools such as emulators and simulators, and this session's own process, stay out.
@@ -47,16 +47,22 @@ Drop each worktree database, then remove each container created for it with its 
 
 ## 5. Delete the remote branch
 
-`git push origin --delete <branch>`, skipped when step 1 found it already gone (the forge may delete it on merge). Then `git fetch --prune`.
+`git push origin --delete <branch>`, then `git fetch --prune`.
 
 **Done when:** `git ls-remote --heads origin <branch>` prints nothing.
 
-## 6. With `all`: worktree and local branch
+## 6. Update the default branch
+
+Fast-forward the main checkout's local default branch to `origin`: `git -C <main> pull --ff-only` when the main checkout has it checked out, otherwise `git -C <main> fetch origin <default>:<default>`. When the fast-forward fails, keep the branch as it is and report why.
+
+**Done when:** the local default branch matches `origin/<default>`, or the failure is reported.
+
+## 7. With `all`: worktree and local branch
 
 When this session runs inside the worktree, leave it first through the host's worktree-exit tool if it has one: the session's working directory disappears with it. Then run from the main checkout, since a checked-out branch cannot be deleted: `git -C <main> worktree remove <path>`, `git -C <main> worktree prune`, then `git -C <main> branch -D <branch>`. A squash merge leaves the branch unmerged in git's eyes, so the PR state from step 2 is the proof of landing.
 
 **Done when:** the worktree is absent from `git worktree list` and the branch from `git branch`.
 
-## 7. Report
+## 8. Report
 
-Report what this run changed: the PR state, one line listing what it removed, one line per ambiguous item kept with its reason. Without `all`, one more line names `/worktree-cleanup all` for the worktree and local branch.
+Report each ambiguous item kept, with its reason. Without `all`, name `/worktree-cleanup all` for the worktree and local branch.
