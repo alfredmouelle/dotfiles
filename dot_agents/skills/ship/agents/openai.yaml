@@ -1,0 +1,5 @@
+interface:
+  display_name: "Ship"
+  short_description: "Open the session's work as one reviewed PR, or merge it and clean up"
+policy:
+  allow_implicit_invocation: false
