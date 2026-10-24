@@ -18,3 +18,4 @@
 - **Worktrees**: When working in a git worktree, read and apply `~/.agents/docs/worktree.md`.
 - **TypeScript**: When writing or reviewing TypeScript, read and apply `~/.agents/docs/typescript.md`.
 - **React**: When writing or reviewing React components, read and apply `~/.agents/docs/react.md`.
+- **UI**: When writing or reviewing markup or styles (HTML, CSS, Tailwind, any framework), read and apply `~/.agents/docs/ui.md`.
