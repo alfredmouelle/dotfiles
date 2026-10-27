@@ -1,0 +1,5 @@
+interface:
+  display_name: "Break UI"
+  short_description: "Stress-test a UI with worst-case data and report what broke"
+policy:
+  allow_implicit_invocation: false

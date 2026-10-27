@@ -1,0 +1,3 @@
+interface:
+  display_name: "Animation Performance"
+  short_description: "Keep web animations inside the frame budget"

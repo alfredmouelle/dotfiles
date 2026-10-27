@@ -1,0 +1,5 @@
+interface:
+  display_name: "Review Animations"
+  short_description: "Review motion code against a high craft bar"
+policy:
+  allow_implicit_invocation: false
