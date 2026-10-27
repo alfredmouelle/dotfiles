@@ -1,5 +1,7 @@
 {
-  "markdown_preview_font_family": "Geist",
+  "markdown_preview": {
+    "font_family": "Geist",
+  },
   "ui_font_family": "Geist",
   "diff_view_style": "unified",
   "cli_default_open_behavior": "new_window",
@@ -44,6 +46,7 @@
     },
   },
   "git_panel": {
+    "group_by": "staging",
     "tree_view": true,
     "dock": "left",
   },
