@@ -1,3 +1,3 @@
-- **Package tooling**: Use the package manager the lockfile names, `pnpm` when there is none, including its one-off runner (`pnpm dlx`) for one-off commands.
-- **Verification**: After code changes, run the `package.json` scripts for type-checking and linting (`pnpm typecheck`, `pnpm check`), and its auto-fix script for lint fixes (`pnpm check:write` with Biome).
-- **Runtime**: Assume the dev server is already running in the main checkout; leave that server untouched.
+- **Package tooling**: Follow the lockfile's package manager, defaulting to `pnpm`; use its one-off runner (`pnpm dlx`).
+- **Verification**: After code changes, run `package.json` typecheck/lint scripts (`pnpm typecheck`, `pnpm check`); use its auto-fix script for lint fixes (`pnpm check:write` with Biome).
+- **Runtime**: Assume the main checkout's dev server is running; leave it untouched.

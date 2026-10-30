@@ -1,8 +1,6 @@
-Write React that Theo Browne and Matt Pocock would be proud of: colocation-first, logic-encapsulated, and free of shallow fragmentation.
-
-- **Deep hooks**: Isolate TanStack Query mutations, validation schemas, and form orchestration into dedicated hooks (`use-<feature>.ts`). Keep JSX files focused on composition, layout, and presentation.
-- **Colocation**: Keep single-use subcomponents, helpers, and local styles in the same file or feature folder. Extract across files only for demonstrated multi-feature reuse or client/server boundaries.
-- **Render isolates**: Split subtrees into separate components only to isolate high-frequency state updates (live inputs, popovers, animations) and protect parent trees from re-rendering. Avoid splitting solely for line-count metrics when it causes prop drilling.
-- **Derived state**: Compute values on the fly during render or via pure helpers. Reserve `useEffect` for synchronization with external systems; compute state transitions directly in event handlers.
-- **Server boundaries**: Keep loaders and server data orchestration at the route boundary. In RSC frameworks (Next.js), push `'use client'` down to the interactive leaf nodes.
-- **Composition**: Favor composition (compound subcomponents, Radix primitives, children slots) over monolithic components driven by dozens of boolean switches.
+- **Deep hooks**: Encapsulate TanStack Query mutations, validation schemas, and form orchestration in dedicated hooks (`use-<feature>.ts`); focus JSX on composition, layout, and presentation.
+- **Colocation**: Keep single-use subcomponents, helpers, and styles in the same file or feature folder. Extract only for demonstrated multi-feature reuse or client/server boundaries.
+- **Render isolates**: Split subtrees only to isolate frequent state updates (live inputs, popovers, animations), protecting parents from re-renders. Avoid line-count splits causing prop drilling.
+- **Derived state**: Compute during render or with pure helpers; handle state transitions in event handlers. Reserve `useEffect` for synchronization with external systems.
+- **Server boundaries**: Keep loaders and server data orchestration at routes. In RSC frameworks (Next.js), place `'use client'` at interactive leaves.
+- **Composition**: Prefer composition (compound subcomponents, Radix primitives, children slots) over monoliths with many boolean switches.

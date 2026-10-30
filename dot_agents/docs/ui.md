@@ -1,9 +1,7 @@
-Build the interface accessible, scalable, and responsive, in any framework.
-
-- **Accessibility**: Meet WCAG 2.2 AA. Prefer native elements over ARIA; make every interaction keyboard-operable with a visible focus; pair color with text or an icon.
-- **Units**: Size in rem (Tailwind scale first); reserve px for borders, outlines, rings, shadows, and blur.
-- **Interactive elements**: Match the cursor to the affordance, e.g. `cursor-pointer` for clickable elements, `cursor-grab` or `cursor-grabbing` for draggable elements, `cursor-col-resize` or `cursor-row-resize` for resize handles, `cursor-not-allowed` for disabled controls.
-- **Responsive design**: Use a mobile-first approach. Define base styles for small screens, then add breakpoint overrides for larger screens.
+- **Accessibility**: Meet WCAG 2.2 AA; prefer native elements over ARIA. Make every interaction keyboard-operable with visible focus; pair color with text or icons.
+- **Units**: Use rem (Tailwind scale first); px only for borders, outlines, rings, shadows, and blur.
+- **Interactive elements**: Match cursors to affordances: clickable `cursor-pointer`, draggable `cursor-grab`/`cursor-grabbing`, resize handles `cursor-col-resize`/`cursor-row-resize`, disabled `cursor-not-allowed`.
+- **Responsive design**: Mobile-first: small-screen base styles, larger-screen breakpoint overrides.
 - **States**: Give every async view loading, empty, and error states.
-- **Color tokens**: Color through semantic tokens (`bg-background`, `text-muted-foreground`) so themes and dark mode apply everywhere.
-- **Motion**: Gate animation and transitions behind `prefers-reduced-motion` (Tailwind `motion-safe:`).
+- **Color tokens**: Use semantic tokens (`bg-background`, `text-muted-foreground`) for colors across themes and dark mode.
+- **Motion**: Gate animations/transitions with `prefers-reduced-motion` (Tailwind `motion-safe:`).
