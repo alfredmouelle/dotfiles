@@ -7,6 +7,7 @@
 - **Smallest sufficient system**: Measure the real constraint before designing. Choose the smallest realistic model that makes correct behavior obvious. Remove superseded complexity. Implement only demonstrated needs; mark speculative features, seams, abstractions, options, configuration, and unrelated cleanup out of scope.
 - **Dependencies**: Ask before adding one. Declare dependencies at exact versions using that ecosystem's pinning syntax, including git refs, CI actions, and container images (pin to a commit SHA, exact tag, or digest).
 - **Builds**: Verify with the project's check commands (typecheck, lint, tests). Build only for what they cannot exercise, such as bundler or build config, or production-only behavior.
+- **Git**: Prefer rebase, fast-forward, or squash merges; preserve attribution. Use merge commits only when repository policy rules out all three.
 
 - **Punctuation**: Use commas, colons, parentheses, or periods in place of em dashes.
 - **Attribution**: Credit commits and artifacts to me alone: no `Co-Authored-By` trailer or generator notice.
