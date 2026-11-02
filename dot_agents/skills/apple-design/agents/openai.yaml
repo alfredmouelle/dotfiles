@@ -1,0 +1,5 @@
+interface:
+  display_name: "Apple Design"
+  short_description: "Apple interface design and fluid motion for the web"
+policy:
+  allow_implicit_invocation: false
