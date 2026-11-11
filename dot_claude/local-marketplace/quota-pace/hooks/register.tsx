@@ -4,16 +4,15 @@ import type { Register } from 'claude-code'
 import type { Limit } from '../types'
 
 const GAP = 2
-const FILL = '#e8b4a3'
-const EMPTY = '#f6e9e4'
-const HATCH = '#ecd3ca'
-const FILL_ALERT = '#e38d88'
-const EMPTY_ALERT = '#f9e3e1'
-const HATCH_ALERT = '#efc4c1'
-const FILL_GOOD = '#a3d29c'
-const EMPTY_GOOD = '#e9f4e7'
-const HATCH_GOOD = '#cde6c8'
-const TICK = '#111111'
+const STYLE = `
+svg{--fill:#e8b4a3;--empty:#f6e9e4;--hatch:#ecd3ca;--tick:#111;--gap:#fff;--txt:#333;--sub:#666;--halo:#fff;--pill:#fff;--pilltxt:#444}
+svg.alert{--fill:#e38d88;--empty:#f9e3e1;--hatch:#efc4c1}
+svg.good{--fill:#a3d29c;--empty:#e9f4e7;--hatch:#cde6c8}
+@media (prefers-color-scheme:dark){
+svg{--fill:#c98470;--empty:#3a2f2c;--hatch:#4a3a35;--tick:#f2f2f2;--gap:#1c1c1c;--txt:#eee;--sub:#aaa;--halo:#000;--pill:#2a2a2a;--pilltxt:#ddd}
+svg.alert{--fill:#cf6560;--empty:#3d2826;--hatch:#523432}
+svg.good{--fill:#6fa86a;--empty:#2b3a2a;--hatch:#3a4e38}}
+`.replace(/\n/g, '')
 const WINDOWS: Record<string, { label: string; ms: number }> = {
   five_hour: { label: '5h', ms: 5 * 3600_000 },
   seven_day: { label: '7d', ms: 7 * 24 * 3600_000 },
@@ -43,25 +42,23 @@ const barSvg = (limit: Limit, windowMs: number, width: number, name: string): st
     ? remaining(limit) <= 15
     : gap <= -threshold || (remaining(limit) <= 15 && gap <= -5)
   const isGood = !isAlert && gap >= threshold
-  const fillColor = isAlert ? FILL_ALERT : isGood ? FILL_GOOD : FILL
-  const emptyColor = isAlert ? EMPTY_ALERT : isGood ? EMPTY_GOOD : EMPTY
-  const hatchColor = isAlert ? HATCH_ALERT : isGood ? HATCH_GOOD : HATCH
+  const state = isAlert ? 'alert' : isGood ? 'good' : ''
   const tick =
     tickX < 0
       ? ''
-      : `<rect x="${Math.min(w - 4.75, Math.max(0, tickX - 2.375)).toFixed(2)}" y="0" width="4.75" height="${BAR_H}" fill="#ffffff"/><rect x="${Math.min(w - 1.75, Math.max(0, tickX - 0.875)).toFixed(2)}" y="0" width="1.75" height="${BAR_H}" rx="0.875" fill="${TICK}"/>`
+      : `<rect x="${Math.min(w - 4.75, Math.max(0, tickX - 2.375)).toFixed(2)}" y="0" width="4.75" height="${BAR_H}" style="fill:var(--gap)"/><rect x="${Math.min(w - 1.75, Math.max(0, tickX - 0.875)).toFixed(2)}" y="0" width="1.75" height="${BAR_H}" rx="0.875" style="fill:var(--tick)"/>`
   const label = Number.isNaN(left) ? '' : `\u21BB ${duration(left)}`
-  const percent = `<text x="${(w / 2).toFixed(1)}" y="${BAR_H / 2 + 3.7}" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#333333" stroke="#ffffff" stroke-opacity="0.6" stroke-width="2.5" paint-order="stroke"><tspan font-weight="400" fill="#666666">${name}</tspan><tspan dx="6">${remaining(limit)}%</tspan></text>`
+  const percent = `<text x="${(w / 2).toFixed(1)}" y="${BAR_H / 2 + 3.7}" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="10.5" font-weight="600" style="fill:var(--txt);stroke:var(--halo);stroke-opacity:0.6;stroke-width:2.5;paint-order:stroke"><tspan font-weight="400" style="fill:var(--sub)">${name}</tspan><tspan dx="6">${remaining(limit)}%</tspan></text>`
   const pillW = Math.round(label.length * 7 + 14)
   const pill =
     label && w > pillW + 60
-      ? `<rect x="${(w - pillW - 5).toFixed(1)}" y="1.5" width="${pillW}" height="${BAR_H - 3}" rx="${(BAR_H - 3) / 2}" fill="#ffffff" fill-opacity="0.85"/><text x="${(w - 5 - pillW / 2).toFixed(1)}" y="${BAR_H / 2 + 3.7}" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="10.5" fill="#444444">${label}</text>`
+      ? `<rect x="${(w - pillW - 5).toFixed(1)}" y="1.5" width="${pillW}" height="${BAR_H - 3}" rx="${(BAR_H - 3) / 2}" style="fill:var(--pill);fill-opacity:0.85"/><text x="${(w - 5 - pillW / 2).toFixed(1)}" y="${BAR_H / 2 + 3.7}" text-anchor="middle" font-family="-apple-system, system-ui, sans-serif" font-size="10.5" style="fill:var(--pilltxt)">${label}</text>`
       : ''
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${BAR_H}" viewBox="0 0 ${w} ${BAR_H}">
-<defs><pattern id="h" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="${emptyColor}"/><rect width="1.5" height="6" fill="${hatchColor}"/></pattern>
+  return `<svg xmlns="http://www.w3.org/2000/svg" class="${state}" width="${w}" height="${BAR_H}" viewBox="0 0 ${w} ${BAR_H}">
+<defs><style>${STYLE}</style><pattern id="h" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" style="fill:var(--empty)"/><rect width="1.5" height="6" style="fill:var(--hatch)"/></pattern>
 <clipPath id="c"><rect width="${w}" height="${BAR_H}" rx="${r}"/></clipPath></defs>
 <g clip-path="url(#c)"><rect width="${w}" height="${BAR_H}" fill="url(#h)"/>
-<rect width="${fillW.toFixed(1)}" height="${BAR_H}" rx="${r}" fill="${fillColor}"/></g>${percent}${tick}${pill}</svg>`
+<rect width="${fillW.toFixed(1)}" height="${BAR_H}" rx="${r}" style="fill:var(--fill)"/></g>${percent}${tick}${pill}</svg>`
 }
 
 const duration = (ms: number): string => {
