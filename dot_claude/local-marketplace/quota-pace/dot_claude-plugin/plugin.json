@@ -1,0 +1,1 @@
+{ "name": "quota-pace", "version": "0.1.0", "description": "Band above the prompt: 5h and 7d quota bars with a pace tick showing elapsed window time.", "types": "./types/index.d.ts" }

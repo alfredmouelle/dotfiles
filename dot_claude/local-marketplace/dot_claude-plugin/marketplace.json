@@ -1,0 +1,7 @@
+{
+  "name": "local-mods",
+  "owner": { "name": "local" },
+  "plugins": [
+    { "name": "quota-pace", "source": "./quota-pace", "description": "Desktop band: 5h and 7d quota bars with a pace tick and hover cards." }
+  ]
+}

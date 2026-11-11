@@ -2,8 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
     "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
-    "OTEL_METRICS_EXPORTER": "none",
     "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet",
+    "OTEL_METRICS_EXPORTER": "none",
     "CLAUDE_CODE_SILENT_TURN_REMINDER": "0"
   },
   "attribution": {
@@ -41,11 +41,21 @@
     "sonnet",
     "default"
   ],
+  "enableWorkflows": true,
   "statusLine": {
     "type": "command",
     "command": "sh ~/.claude/statusline-command.sh"
   },
+  "extraKnownMarketplaces": {
+    "local-mods": {
+      "source": {
+        "source": "directory",
+        "path": "{{ .chezmoi.homeDir }}/.claude/local-marketplace"
+      }
+    }
+  },
   "effortLevel": "medium",
+  "autoCompactWindow": 475000,
   "tui": "fullscreen",
   "voice": {
     "enabled": true,
@@ -55,9 +65,10 @@
   "skipDangerousModePermissionPrompt": true,
   "theme": "auto",
   "autoCompactEnabled": true,
-  "autoCompactWindow": 400000,
   "remoteControlAtStartup": false,
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
-  "enableWorkflows": true
+  "enabledPlugins": {
+    "quota-pace@local-mods": true
+  }
 }
