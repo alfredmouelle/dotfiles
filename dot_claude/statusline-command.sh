@@ -63,69 +63,86 @@ fi
 #   line1="$line1 ${DIMGRAY}|${RESET} 💰 ${GREEN}\$${costf}${RESET}"
 # fi
 
-if [ -n "$five" ]; then
-  fivei=$(printf '%.0f' "$five")
-  remain=$(( 100 - fivei ))
-  # color by usage
-  if [ "$fivei" -ge 80 ]; then barcol=$RED
-  elif [ "$fivei" -ge 50 ]; then barcol=$YELLOW
-  else barcol=$GRAY; fi
-  # 10-cell bar, fills as usage grows
-  filled=$(( fivei / 10 ))
-  [ "$filled" -gt 10 ] && filled=10
-  [ "$filled" -lt 0 ] && filled=0
-  bar=""
-  i=0
-  while [ "$i" -lt 10 ]; do
-    if [ "$i" -lt "$filled" ]; then bar="${bar}█"; else bar="${bar}░"; fi
-    i=$(( i + 1 ))
-  done
-  reset_str=""
-  if [ -n "$five_reset" ]; then
-    now=$(date +%s)
-    diff=$(( five_reset - now ))
-    [ "$diff" -lt 0 ] && diff=0
-    rh=$(( diff / 3600 ))
-    rm=$(( (diff % 3600) / 60 ))
-    if [ "$rh" -gt 0 ]; then
-      reset_str=" ${GRAY}${rh}h${rm}m${RESET}"
-    else
-      reset_str=" ${GRAY}${rm}m${RESET}"
-    fi
-  fi
-  line1="$line1 ${DIMGRAY}|${RESET} ⏱️ ${barcol}${bar}${RESET} ${barcol}${remain}%${RESET}${reset_str}"
-fi
+# --- Quota bars (same look as the quota-pace desktop mod) ---
+dark=0
+[ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" = "Dark" ] && dark=1
 
+# quota_bar <label> <used%> <resets_at epoch> <window seconds>
+quota_bar() {
+  awk -v label="$1" -v used="$2" -v reset="$3" -v win="$4" -v now="$(date +%s)" -v dark="$dark" -v w=20 '
+  function rgb(h,  r,g,b) {
+    r = index("0123456789abcdef", substr(h,1,1))*16 + index("0123456789abcdef", substr(h,2,1)) - 17
+    g = index("0123456789abcdef", substr(h,3,1))*16 + index("0123456789abcdef", substr(h,4,1)) - 17
+    b = index("0123456789abcdef", substr(h,5,1))*16 + index("0123456789abcdef", substr(h,6,1)) - 17
+    return r ";" g ";" b
+  }
+  function fg(h) { return "\033[38;2;" rgb(h) "m" }
+  function bg(h) { return "\033[48;2;" rgb(h) "m" }
+  function dur(s,  m,d,h) {
+    m = int(s/60 + 0.5); d = int(m/1440); h = int((m%1440)/60)
+    if (d > 0) return d "d" h "h"
+    if (h > 0) return sprintf("%dh%02dm", h, m%60)
+    return m "m"
+  }
+  BEGIN {
+    rem = 100 - int(used + 0.5); if (rem < 0) rem = 0
+    hasreset = (reset != "")
+    left = hasreset ? reset - now : 0; if (left < 0) left = 0
+    thr = (win > 86400) ? 10 : 20
+    if (hasreset) {
+      expct = (left < win ? left : win) / win * 100
+      gap = rem - expct
+      alert = (gap <= -thr) || (rem <= 15 && gap <= -5)
+      good = !alert && gap >= thr
+    } else { alert = rem <= 15; good = 0 }
+
+    if (dark) {
+      FILL="6b6b6b"; EMPTY="2e2e2e"; HATCH="404040"; TICK="f2f2f2"; TXT="eeeeee"; SUB="aaaaaa"
+      if (alert) { FILL="cf6560"; EMPTY="3d2826"; HATCH="523432" }
+      if (good)  { FILL="6fa86a"; EMPTY="2b3a2a"; HATCH="3a4e38" }
+    } else {
+      FILL="cfcfcf"; EMPTY="f1f1f1"; HATCH="dddddd"; TICK="111111"; TXT="333333"; SUB="666666"
+      if (alert) { FILL="e38d88"; EMPTY="f9e3e1"; HATCH="efc4c1" }
+      if (good)  { FILL="a3d29c"; EMPTY="e9f4e7"; HATCH="cde6c8" }
+    }
+
+    filled = int(rem / 100 * w + 0.5)
+    tick = hasreset ? int((left < win ? left : win) / win * w) : -1
+    if (tick >= w) tick = w - 1
+
+    text = label " " rem "%"
+    L = length(text)
+    ts = int((w - L) / 2)
+    if (tick >= ts && tick < ts + L) {
+      r = tick + 1; l = tick - L; c = ts
+      if (r + L > w) ts = l
+      else if (l < 0) ts = r
+      else ts = (c - l <= r - c) ? l : r
+    }
+    out = ""
+    for (i = 0; i < w; i++) {
+      cbg = (i < filled) ? FILL : EMPTY
+      if (i == tick) { out = out bg(cbg) fg(TICK) "\033[1m┃\033[22m"; continue }
+      if (i >= ts && i < ts + length(text)) {
+        ch = substr(text, i - ts + 1, 1)
+        col = (i - ts < length(label)) ? SUB : TXT
+        b = (i - ts >= length(label)) ? "\033[1m" : ""
+        out = out bg(cbg) fg(col) b ch "\033[22m"
+        continue
+      }
+      out = out bg(cbg) ((i < filled) ? " " : fg(HATCH) "╱")
+    }
+    out = out "\033[0m"
+    if (hasreset) out = out " " fg(SUB) dur(left) "\033[0m"
+    printf "%s", out
+  }'
+}
+
+if [ -n "$five" ]; then
+  line1="$line1 ${DIMGRAY}|${RESET} $(quota_bar 5h "$five" "$five_reset" 18000)"
+fi
 if [ -n "$week" ]; then
-  weeki=$(printf '%.0f' "$week")
-  wkremain=$(( 100 - weeki ))
-  if [ "$weeki" -ge 80 ]; then wkcol=$RED
-  elif [ "$weeki" -ge 50 ]; then wkcol=$YELLOW
-  else wkcol=$GRAY; fi
-  wkfilled=$(( weeki / 10 ))
-  [ "$wkfilled" -gt 10 ] && wkfilled=10
-  [ "$wkfilled" -lt 0 ] && wkfilled=0
-  wkbar=""
-  i=0
-  while [ "$i" -lt 10 ]; do
-    if [ "$i" -lt "$wkfilled" ]; then wkbar="${wkbar}█"; else wkbar="${wkbar}░"; fi
-    i=$(( i + 1 ))
-  done
-  wkreset_str=""
-  if [ -n "$week_reset" ]; then
-    now=$(date +%s)
-    wdiff=$(( week_reset - now ))
-    [ "$wdiff" -lt 0 ] && wdiff=0
-    wd=$(( wdiff / 86400 ))
-    wh=$(( (wdiff % 86400) / 3600 ))
-    if [ "$wd" -gt 0 ]; then
-      wkreset_str=" ${GRAY}${wd}d${wh}h${RESET}"
-    else
-      wm=$(( (wdiff % 3600) / 60 ))
-      wkreset_str=" ${GRAY}${wh}h${wm}m${RESET}"
-    fi
-  fi
-  line1="$line1 ${DIMGRAY}/${RESET} 📅 ${wkcol}${wkbar}${RESET} ${wkcol}${wkremain}%${RESET}${wkreset_str}"
+  line1="$line1  $(quota_bar 7d "$week" "$week_reset" 604800)"
 fi
 
 # ---------- Line 2 ----------

@@ -5,11 +5,11 @@ import type { Limit } from '../types'
 
 const GAP = 2
 const STYLE = `
-svg{--fill:#e8b4a3;--empty:#f6e9e4;--hatch:#ecd3ca;--tick:#111;--gap:#fff;--txt:#333;--sub:#666;--halo:#fff;--pill:#fff;--pilltxt:#444}
+svg{--fill:#cfcfcf;--empty:#f1f1f1;--hatch:#dddddd;--tick:#111;--gap:#fff;--txt:#333;--sub:#666;--halo:#fff;--pill:#fff;--pilltxt:#444}
 svg.alert{--fill:#e38d88;--empty:#f9e3e1;--hatch:#efc4c1}
 svg.good{--fill:#a3d29c;--empty:#e9f4e7;--hatch:#cde6c8}
 @media (prefers-color-scheme:dark){
-svg{--fill:#c98470;--empty:#3a2f2c;--hatch:#4a3a35;--tick:#f2f2f2;--gap:#1c1c1c;--txt:#eee;--sub:#aaa;--halo:#000;--pill:#2a2a2a;--pilltxt:#ddd}
+svg{--fill:#6b6b6b;--empty:#2e2e2e;--hatch:#404040;--tick:#f2f2f2;--gap:#1c1c1c;--txt:#eee;--sub:#aaa;--halo:#000;--pill:#2a2a2a;--pilltxt:#ddd}
 svg.alert{--fill:#cf6560;--empty:#3d2826;--hatch:#523432}
 svg.good{--fill:#6fa86a;--empty:#2b3a2a;--hatch:#3a4e38}}
 `.replace(/\n/g, '')
