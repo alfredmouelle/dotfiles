@@ -60,3 +60,5 @@
 [merge]
 	conflictStyle = zdiff3
 	ff = only
+[include]
+	path = ~/.gitconfig.local
