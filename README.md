@@ -5,7 +5,6 @@ Personal macOS setup managed with [chezmoi](https://www.chezmoi.io/).
 ## Stack
 
 - **Terminal & shell**: Ghostty (GeistMono Nerd Font), Zsh, and runtimes (`fnm`, `bun`, `pnpm` via corepack).
-- **Multiplexer**: Tmux with Catppuccin theme, TPM plugins, and a `dev` workspace launcher.
 - **Git & editors**: Delta diff pager, Vim (`.vimrc`), and Zed.
 - **AI agents**: Shared skills and configurations in `~/.agents/` symlinked for Claude Code and Codex.
 
@@ -38,15 +37,3 @@ approval_policy = { granular = { sandbox_approval = false, rules = true, skill_a
 | `dotd` | View diff against repository |
 | `dot update` | Pull remote changes and reload shell |
 | `dotp "message"` | Stage, commit, and push |
-
-### Tmux & workspaces
-
-| Shortcut / Command | Action |
-| :--- | :--- |
-| `dev <project>` | Open or attach project session |
-| `Option + 1...9` | Jump directly to window 1 to 9 |
-| `Option + Tab` | Toggle last active window |
-| `Ctrl + h / j / k / l` | Focus pane (left, down, up, right) |
-| `Ctrl-a Space` | Action menu for splits, tabs, and sessions |
-| `tk <project>` | Kill project session |
-| `tks` | Kill entire tmux server |

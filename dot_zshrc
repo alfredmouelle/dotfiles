@@ -23,10 +23,6 @@ alias brewup='brew update && brew upgrade'
 alias cc="claude --dangerously-skip-permissions"
 alias ccc="claude --dangerously-skip-permissions -c"
 
-# Tmux
-alias tk="tmux kill-session -t"
-alias tks="tmux kill-server"
-
 # Chezmoi
 unalias dot 2>/dev/null
 dot() {
