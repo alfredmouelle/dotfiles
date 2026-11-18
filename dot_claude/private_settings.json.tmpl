@@ -70,5 +70,19 @@
   "agentPushNotifEnabled": true,
   "enabledPlugins": {
     "quota-pace@local-mods": true
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '{{ .chezmoi.homeDir }}/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
   }
 }
