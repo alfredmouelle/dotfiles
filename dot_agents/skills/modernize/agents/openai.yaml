@@ -1,0 +1,5 @@
+interface:
+  display_name: "Modernize PR"
+  short_description: "Rebase and reassess an aging pull request"
+policy:
+  allow_implicit_invocation: false

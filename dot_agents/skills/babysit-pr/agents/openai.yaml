@@ -1,0 +1,3 @@
+interface:
+  display_name: "Babysit PR"
+  short_description: "Watch a PR through review and CI"

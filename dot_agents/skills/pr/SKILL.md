@@ -1,6 +1,7 @@
 ---
 name: pr
-description: "Use when writing a PR body."
+description: "Write a PR body that's fast to review."
+disable-model-invocation: true
 metadata:
   credits:
     skill: show-me
