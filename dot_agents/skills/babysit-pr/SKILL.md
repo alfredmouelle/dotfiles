@@ -10,7 +10,7 @@ metadata:
 
 # Babysit PR
 
-Babysitting authorizes committing fixes and pushing them, rebases included (`--force-with-lease`), to the PR's own branch. Merging stays with the user unless they asked for it.
+Babysitting authorizes committing fixes and pushing them, rebases included, to the PR's own branch. Merging stays with the user unless they asked for it.
 
 ## 1. Catch up
 
@@ -33,7 +33,7 @@ In Claude Code, run it with the Monitor tool (`timeout_ms: 3600000`) so each pri
 
 Restart it after each push, after handling an exit `1`, and after a resume.
 
-**Done when:** pr-wait exits.
+**Done when:** pr-wait prints an event or exits.
 
 ## 3. Handle events
 
@@ -52,6 +52,6 @@ GitHub's GraphQL and REST rate limits are separate. When `gh pr view` or `gh pr 
 
 ## 4. Stop
 
-Stop when pr-wait exits `0`. When the user asked for a merge, run `git fetch`, then check the PR again: merge only when it is neither BEHIND nor DIRTY and no base commit landed after the last green run touches its files; otherwise rebase, push, and return to step 2. Without a merge request, report the PR as ready.
+Stop when pr-wait exits `0`. When the user asked for a merge, merge as Land step 1 of `~/.agents/skills/ship/SKILL.md` describes. Without a merge request, report the PR as ready.
 
 **Done when:** the PR is merged as requested, or reported ready with its URL.

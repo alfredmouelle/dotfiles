@@ -12,13 +12,13 @@ metadata:
 
 ## 1. Check
 
-Run `gh pr view` for the current branch; an existing PR ends the run with its URL. Read the full diff against the base branch (usually `origin/main`) and compare it with the user's goal.
+Run `gh pr view` for the current branch; an existing PR ends the run with its URL. Fetch, then read the full diff against the base branch (usually `origin/main`) and compare it with the user's goal.
 
 **Done when:** no PR covers the branch and every hunk serves the goal.
 
 ## 2. Branch
 
-Name the branch `<type>/<kebab-case-description>` per the Conventional Branch spec (e.g. `feat/websocket-compression`); a different convention visible in the repository's branches takes precedence. From the default branch, move the work to a new branch. From a branch named otherwise, rename it with `git branch -m`; when the old name is on the remote, push the new name and delete the old remote branch. Push the branch.
+Name the branch `<type>/<kebab-case-description>` per the Conventional Branch spec (e.g. `feat/websocket-compression`); a different convention visible in the repository's branches takes precedence. From the default branch, move the work to a new branch (`git switch -c`, then reset the local default branch to its remote). From a branch named otherwise, rename it with `git branch -m`, and delete the old name from the remote when it is there. Push the branch, with `--force-with-lease` when its history was rewritten since the last push.
 
 **Done when:** the branch follows the naming convention and the remote branch matches the local one.
 

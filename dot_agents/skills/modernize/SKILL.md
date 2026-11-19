@@ -44,16 +44,16 @@ Pick one, before any push:
 
 Recommend `CLOSE` whenever the evidence supports it: age alone is no evidence, and sunk effort is no reason to keep a PR alive.
 
-**Done when:** the disposition rests on the evidence from step 2.
+**Done when:** the disposition rests on the evidence from Drift.
 
 ## 4. Rebase
 
 1. Create a local branch or disposable worktree at the recorded PR head.
 2. Rebase its commits onto the freshly fetched base.
-3. Resolve each conflict by the PR's intent and the base's newer invariants. When a conflict reveals a product or architecture disagreement, return to step 3.
+3. Resolve each conflict by the PR's intent and the base's newer invariants. When a conflict reveals a product or architecture disagreement, return to Disposition.
 4. Compare the series before and after with `git range-diff`, then read the final diff.
 5. Run the project's checks for the touched area; tell real failures from pre-existing or infrastructure ones.
-6. Push with `--force-with-lease=<branch>:<head SHA from step 1>`. When the lease fails, fetch and return to step 2.
+6. Push with `--force-with-lease=<branch>:<head SHA recorded in Intent>`. When the lease fails, fetch and return to Drift.
 
 **Done when:** no intended behavior disappeared, no already-landed behavior came back, the checks pass, and the push succeeded.
 
