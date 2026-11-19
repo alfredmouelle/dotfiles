@@ -1,0 +1,3 @@
+interface:
+  display_name: "Merge PR"
+  short_description: "Merge a pull request and close its issues"

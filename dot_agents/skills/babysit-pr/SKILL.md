@@ -52,6 +52,6 @@ GitHub's GraphQL and REST rate limits are separate. When `gh pr view` or `gh pr 
 
 ## 4. Stop
 
-Stop when pr-wait exits `0`. When the user asked for a merge, merge as Land step 1 of `~/.agents/skills/ship/SKILL.md` describes. Without a merge request, report the PR as ready.
+Stop when pr-wait exits `0`. When the user asked for a merge, merge with the `merge-pr` skill; when it stops on a failure, return to step 3. Without a merge request, report the PR as ready.
 
 **Done when:** the PR is merged as requested, or reported ready with its URL.
