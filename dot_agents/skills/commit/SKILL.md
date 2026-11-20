@@ -23,4 +23,10 @@ Run the repository's formatter on the staged paths only, then re-stage those pat
 
 Repository commit rules override this fallback: Conventional Commits, subject at most 72 characters. A body is earned by one fact the diff cannot show (a decision taken, a constraint obeyed, a breaking impact), in at most two lines. Make one commit; split only when the user asks. Create each commit without another confirmation.
 
-**Done when:** the staged hunks are committed.
+The subject states the change in behavior, in the project's domain language (`GLOSSARY.md` when present):
+
+> ❌ fix(sync): wrap upload in retryWithBackoff
+>
+> ✅ fix(sync): retry uploads that fail on a dropped connection
+
+**Done when:** the staged hunks are committed, and a reader of `git log --oneline` knows what changed without opening the diff.
