@@ -1,11 +1,11 @@
 ---
-name: ship
+name: land
 description: Ship the session's work as one PR, or merge it and clean up.
 argument-hint: "[reviewer] | merge [all]"
 disable-model-invocation: true
 ---
 
-# Ship
+# Land
 
 Without `merge`, **open**: the session's work becomes one commit on a pushed branch with a PR awaiting review. With `merge`, **land**: the PR merges and its leftovers go; only `merge all` also removes a worktree and its local branch.
 

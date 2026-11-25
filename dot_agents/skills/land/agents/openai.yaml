@@ -1,5 +1,5 @@
 interface:
-  display_name: "Ship"
+  display_name: "Land"
   short_description: "Open the session's work as one reviewed PR, or merge it and clean up"
 policy:
   allow_implicit_invocation: false
